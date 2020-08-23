@@ -1,0 +1,44 @@
+nav {
+  background-color: rgb(143, 229, 255);
+  color: #fff;
+  margin-bottom: 40px;
+}
+
+nav .container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.logo {
+  color: #fff;
+}
+
+.logo h1 {
+  font-size: 30px;
+  padding: 0;
+  margin: 0;
+  color: #fff;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  margin: 0;
+}
+
+.nav-item {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.nav-link {
+  display: block;
+  color: #fff;
+  padding: 10px;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  border-bottom: #004D99 solid 2px;
+}
