@@ -8,10 +8,12 @@ nav .container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  height: 40px;
 }
 
 .logo {
   color: #fff;
+  text-decoration: none;
 }
 
 .logo h1 {
@@ -36,6 +38,7 @@ nav .container {
   display: block;
   color: #fff;
   padding: 10px;
+  text-decoration: none;
 }
 
 .nav-link:hover,

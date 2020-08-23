@@ -1,9 +1,9 @@
 import React from 'react';
 import { Navbar } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom';
-import './NavBar.css';
+import './Navibar.css';
 
-const Navbar = (props) => {
+const Navibar = (props) => {
   return(
     <nav>
       <div className="container">
@@ -32,4 +32,4 @@ const Navbar = (props) => {
   )
 }
 
-export default Navbar;
+export default Navibar;
