@@ -1,0 +1,12 @@
+.card {
+  background-color: rgb(214, 244, 254);
+  margin: 10px;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.dash-btn-grp a button {
+  cursor: pointer;
+}

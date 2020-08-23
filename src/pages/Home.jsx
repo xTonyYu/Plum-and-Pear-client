@@ -1,6 +1,6 @@
 import React from 'react'
-import ProductModel from '../models/product'
-import DisplayCards from '../containers/DisplayCards/DisplayCards'
+// import ProductModel from '../models/product'
+// import DisplayCards from '../components/DisplayCards/DisplayCards'
 
 class Home extends React.Component {
   state = {
