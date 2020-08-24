@@ -23,7 +23,7 @@ class ProductModel {
     return axios.put(`${endPoint}/${id}`, data)
   }
 
-  static revmoveProduct = (id) => {
+  static removeProduct = (id) => {
     return axios.delete(`${endPoint}/${id}`)
   }
 }

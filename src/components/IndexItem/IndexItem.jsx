@@ -11,6 +11,9 @@ class IndexItem extends React.Component {
     alert('Delete prod id =', this.props.prod._id)
 
   }
+  componentWillUnmount() {
+    console.log("unmounting in IndexItem", this.props.prod._id)
+  }
 
   render() {
     console.log(this.props)

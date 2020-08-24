@@ -72,14 +72,15 @@ class Products extends React.Component {
 
   removeProduct = (id, prodType) => {
     // alert('In Dashboard, id =', id)
-    ProductModel.revmoveProduct(id)
+    ProductModel.removeProduct(id)
     .then(res => {
-      console.log(res)
       let products = this.state.products.filter(prod => {
-        return prod._id === res.data._id
+        console.log(prod)
+        return prod._id !== res.data._id
       })
+      console.log(products)
       this.setState({products})
-      this.props.history.push('/admin')
+      // this.props.history.push('/admin')
     })
     .catch(err => console.log('err deleting...', err))
     // this.getProdByType(prodType)
@@ -89,7 +90,7 @@ class Products extends React.Component {
     // })
   }
 
-  render() {
+  render() { 
 
     return (
       <div className="dash-container">
