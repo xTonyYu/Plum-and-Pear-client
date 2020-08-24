@@ -21,7 +21,7 @@ const Navibar = (props) => {
             <NavLink className="nav-link" exact to='/'>Product List</NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" exact to='/'>Add Product</NavLink>
+            <NavLink className="nav-link" exact to='/admin/addprod'>Add Product</NavLink>
           </li>
           <li className="nav-item">
             <NavLink className="nav-link" exact to='/'>Logout</NavLink>

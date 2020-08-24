@@ -1,0 +1,62 @@
+
+/* index */
+
+#chart-div {
+  width: 20%
+}
+
+.table-row {
+  width: 70vw;
+  background-color: rgb(250, 245, 245);  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  border: solid 3px steelblue;
+  border-radius: 5px;
+  box-shadow: 4px 4px 3px;
+  padding: 10px;
+  margin: 2px;
+}
+.table-cell {
+  display: inline-block;
+  height: 100%;
+  padding: 3px;
+  align-content: center;
+  vertical-align: middle;
+}
+.row-name {
+  width: 20%;
+  min-width: 200px;
+}
+.row-status {
+  margin: 0;
+  width: 7%;
+  min-width: 80px;
+}
+.row-quantity {
+  width: 5%;
+  min-width: 50px;
+}
+
+.row-price-cost {
+  width: 10%;
+  min-width: 120px;
+}
+.row-price,
+.row-cost {
+  width: 5%;
+  min-width: 100px;
+}
+.row-action {
+  display: flex;
+}
+.btn {
+  margin: 0 10px;
+}
+
+@media only screen and (max-width: 650px) {
+  .row-price-cost {
+    min-width: 215px;
+  }
+}

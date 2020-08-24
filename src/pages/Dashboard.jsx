@@ -41,12 +41,37 @@ class Products extends React.Component {
     .catch(err => console.log('err getting all users...', err))
   }
 
+  getProdByType(prodType) {
+    ProductModel.getProductByType(prodType)
+    .then(prod => {
+      console.log(prod.data)
+      return prod.data;
+    })
+  }
+
+  removeProduct = (id, prodType) => {
+    // alert('In Dashboard, id =', id)
+    ProductModel.revmoveProduct(id)
+    .then(res => console.log(res))
+    .catch(err => console.log('err deleting...', err))
+    // this.getProdByType(prodType)
+    // .then(prod => {
+    //   const relatedProducts = prod.data;
+      // this.props.history.push({pathname: '/admin/index', removeProduct: this.removeProduct, state: relatedProducts})
+    // })
+    this.props.history.push('/admin')
+  }
+
   render() {
 
     return (
       <div className="container">
         <h1>Manager Dashboard</h1>
-        <DisplayCards products={this.state.products} users={this.state.users} />
+        <DisplayCards 
+          products={this.state.products} 
+          users={this.state.users} 
+          removeProduct={this.removeProduct}
+        />
       </div>
     )
   }

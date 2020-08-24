@@ -7,7 +7,7 @@ const formatToCurrency = function formatToCurrency(variable, string, currencySty
     return Intl.NumberFormat(string, currencyStyle).format(variable);
 }
 
-function DisplayCards({products, users}) {
+function DisplayCards({products, users, removeProduct}) {
   // user section
   const total = users.length;
   const userCards = users.map(user => {
@@ -53,7 +53,8 @@ function DisplayCards({products, users}) {
   
   const productCards = arrProdTypeSumm.map(prod => {
     const relatedProducts = products.filter(product => (product.prodType === prod.type))
-    return <Summary prod={prod} key={prod.type} relatedProducts={relatedProducts} />
+    console.log(removeProduct)
+    return <Summary prod={prod} key={prod.type} relatedProducts={relatedProducts} removeProduct={removeProduct} />
     }
   )
 
