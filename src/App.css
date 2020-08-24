@@ -86,6 +86,9 @@ h2 {
   /* margin: 10px; */
   color: rgb(33, 37, 41);
 }
+.title .ind-name {
+  background-color: transparent;
+}
 .title h2 {
   text-align: center;
 }
@@ -106,6 +109,9 @@ label {
 input[type="text"],
 input[type="number"],
 textarea,
+input[type="username"],
+input[id="firstname"],
+input[id="lastname"],
 input[type="email"],
 input[type="password"] {
   display: block;

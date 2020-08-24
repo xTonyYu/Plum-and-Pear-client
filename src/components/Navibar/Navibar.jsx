@@ -15,7 +15,10 @@ const Navibar = (props) => {
             <NavLink className="nav-link" exact to='/'>Shop</NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" exact to='/'>Account</NavLink>
+            <NavLink className="nav-link" exact to='/login'>Login</NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink className="nav-link" exact to='/signup'>Sign Up</NavLink>
           </li>
           <li className="nav-item">
             <NavLink className="nav-link" exact to='/admin'>Dashboard</NavLink>

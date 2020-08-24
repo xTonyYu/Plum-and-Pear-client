@@ -4,6 +4,7 @@ import setAuthHeader from './util/setAuthHeader'
 // import logo from './logo.svg';
 import Routes from './config/routes';
 import Navibar from './components/Navibar/Navibar';
+import { withRouter } from 'react-router-dom'
 import './App.css';
 
 class App extends React.Component {
@@ -15,6 +16,7 @@ class App extends React.Component {
     localStorage.setItem('token', token)
     setAuthHeader(token)
     const decoded = jwt_decode(token)
+    console.log(decoded)
     this.setState({currentUser: decoded.id})
   }
 
@@ -30,4 +32,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withRouter(App);

@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route, Redirect, Link } from 'react-router-dom'
 import Home from '../pages/Home'
 import Login from '../components/Auth/Login'
+import Signup from '../components/Auth/Signup'
 import AddProduct from '../containers/AddProduct'
 import EditProduct from '../containers/EditProduct'
 import Index from '../pages/Index'
@@ -12,6 +13,7 @@ const routes = (props) => {
     <Switch>
       <Route exact path='/' render={() => <Redirect to='/plumandpear' />} />
       <Route exact path='/plumandpear' component={Home} />
+      <Route exact path='/signup' component={Signup} />
       <Route exact path='/login' render={() => <Login setCurrentUser={props.setCurrentUser}/>} />
 
   {/* <Route exact path='/admin/addprod' render={() => <AddProduct remove={Dashboard.removeProduct}/> }/> */}
