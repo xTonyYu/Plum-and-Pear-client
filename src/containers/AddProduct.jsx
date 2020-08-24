@@ -29,7 +29,7 @@ class AddProduct extends React.Component {
   render() {
     return (
       <>
-      <div>
+      <div className="container">
         <h2>Add New Product</h2>
         <form onSubmit={this.handleSubmit}>
           <div>

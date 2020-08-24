@@ -19,11 +19,11 @@
   margin: 2px;
 }
 .table-cell {
-  display: inline-block;
-  height: 100%;
+  /* display: inline-block; */
+  /* height: 100%; */
   padding: 3px;
-  align-content: center;
-  vertical-align: middle;
+  /* align-content: center; */
+  /* vertical-align: middle; */
 }
 .row-name {
   width: 20%;
@@ -35,7 +35,7 @@
   min-width: 80px;
 }
 .row-quantity {
-  width: 5%;
+  /* width: 5%; */
   min-width: 50px;
 }
 
@@ -45,8 +45,10 @@
 }
 .row-price,
 .row-cost {
-  width: 5%;
+  display: inline-block;
+  /* width: 5%; */
   min-width: 100px;
+  margin-left: 10px;
 }
 .row-action {
   display: flex;
@@ -57,6 +59,6 @@
 
 @media only screen and (max-width: 650px) {
   .row-price-cost {
-    min-width: 215px;
+    min-width: 250px;
   }
 }

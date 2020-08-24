@@ -9,6 +9,7 @@ nav .container {
   flex-direction: row;
   justify-content: space-between;
   height: 40px;
+  width: 100vw;
 }
 
 .logo {

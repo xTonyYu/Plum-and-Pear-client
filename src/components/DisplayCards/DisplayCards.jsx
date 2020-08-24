@@ -7,15 +7,16 @@ const formatToCurrency = function formatToCurrency(variable, string, currencySty
     return Intl.NumberFormat(string, currencyStyle).format(variable);
 }
 
-function DisplayCards({products, users, removeProduct}) {
+function DisplayCards({products, users, removeProduct, editProduct}) {
   // user section
-  const total = users.length;
-  const userCards = users.map(user => {
-    return <Summary user={user} key={user._id} />
-  })
+  // const total = users.length;
+  // const userCards = users.map(user => {
+  //   return <Summary user={user} key={user._id} />
+  // })
 
   // summarizing product price and cost by product type
   const prodTypeSumm = {};
+  console.log(products)
   products.map(prod => {
     let productType;
     if (prod.prodType in prodTypeSumm) {
@@ -49,12 +50,11 @@ function DisplayCards({products, users, removeProduct}) {
   for (const type in prodTypeSumm) {
       arrProdTypeSumm.push(prodTypeSumm[type])
   }
-  console.log("in arrprodTypeSumm", arrProdTypeSumm);
   
   const productCards = arrProdTypeSumm.map(prod => {
     const relatedProducts = products.filter(product => (product.prodType === prod.type))
-    console.log(removeProduct)
-    return <Summary prod={prod} key={prod.type} relatedProducts={relatedProducts} removeProduct={removeProduct} />
+    // console.log(removeProduct)
+    return <Summary prod={prod} key={prod.type} relatedProducts={relatedProducts} removeProduct={removeProduct} editProduct={editProduct} />
     }
   )
 

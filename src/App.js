@@ -9,7 +9,7 @@ class App extends React.Component {
     return (
       <React.Fragment>
         <Navibar />
-        <main className="">
+        <main>
           <Routes />
         </main>
       </React.Fragment>    
