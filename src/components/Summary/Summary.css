@@ -1,0 +1,16 @@
+.card {
+  margin: 10px;
+  min-width: 220px;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.dash-btn-grp {
+  display: flex;
+  justify-content: flex-end;
+}
+.dash-btn-grp a button {
+  cursor: pointer;
+}
