@@ -18,8 +18,10 @@ class Login extends React.Component {
     e.preventDefault()
     axios.post(`${process.env.REACT_APP_API}/auth/login`, this.state)
     .then((res) => {
-      console.log(res)
-      this.props.setCurrentUser(res.data.token)
+      console.log(res.config.data)
+      let admin = res.config.data.includes(`AdminX`)
+      console.log("admin: ", admin);
+      this.props.setCurrentUser(res.data.token, admin)
       this.props.history.push('./')
     })
     .catch(err => console.log('err login...', err))
@@ -28,6 +30,7 @@ class Login extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
+        
         <div className="form-group">
           <label htmlFor="username">Username</label>
           <input onChange={this.handleChange} type="username" id="username" name="userName" value={this.state.userName} />

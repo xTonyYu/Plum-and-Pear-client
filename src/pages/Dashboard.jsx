@@ -80,7 +80,7 @@ class Products extends React.Component {
       })
       console.log(products)
       this.setState({products})
-      // this.props.history.push('/admin')
+      this.props.history.push('/admin')
     })
     .catch(err => console.log('err deleting...', err))
     // this.getProdByType(prodType)
