@@ -27,14 +27,16 @@ class IndexItem extends React.Component {
             <div className="table-cell row-cost">Cost: { Intl.NumberFormat('en-US', currencyStyle).format(this.props.prod.cost) } </div>
         </div>
         <div className="table-cell row-quantity">Qty: { Intl.NumberFormat('en-US').format(this.props.prod.quantity) }</div>
+        
+        {this.props.admin && (
         <div className="table-cell btn-group row-action" role="group" aria-label="Basic example">
             <button onClick={() => this.props.removeProduct(this.props.prod._id, this.props.prod.prodType)} type="button" className="btn btn-secondary delete-btn">Delete</button>
 
             <Link to={{pathname: '/admin/editprod', editProduct: this.props.editProduct, state: this.props.prod}} >
                 <button type="submit" type="button" className="btn btn-secondary btn-right">Update</button>
             </Link>
-
         </div>
+        )}
       </div>
       </>
     )

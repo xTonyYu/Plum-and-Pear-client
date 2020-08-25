@@ -10,7 +10,7 @@ function Index(props) {
     console.log(props.location.state);
     const products = props.location.state;
     const displayProducts = products.map(prod => {
-      return <IndexItem prod={prod} key={prod._id} removeProduct={props.location.removeProduct} editProduct={props.location.editProduct} />
+      return <IndexItem prod={prod} key={prod._id} removeProduct={props.location.removeProduct} editProduct={props.location.editProduct} admin={props.location.admin} />
     })
 
     const prod = props.location.state[0];

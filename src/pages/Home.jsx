@@ -8,21 +8,6 @@ class Home extends React.Component {
     products: [],
   }
 
-  componentDidMount() {
-    console.log('HOME page Comp Did Mount');
-    this.getProducts()
-  }
-
-  getProducts() {
-    ProductModel.getAllProducts()
-    .then(prod => {
-      console.log("at Home, data:", prod.data);
-      this.setState({products: prod.data})
-    })
-    .catch (err => console.log('err getting all products...', err))
-  }
-
-
   render() {
     return (
       <div className="container">
