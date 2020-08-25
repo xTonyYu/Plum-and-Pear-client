@@ -6,15 +6,15 @@ import Login from '../components/Auth/Login'
 import Signup from '../components/Auth/Signup'
 import AddProduct from '../containers/AddProduct'
 import EditProduct from '../containers/EditProduct'
-import Index from '../pages/Index'
+import Index from '../pages/Index' 
 import Dashboard from '../pages/Dashboard'
 
-export default ({currentUser, setCurrentUser, admin}) => {
+export default ({currentUser, userInfo, setCurrentUser, admin}) => {
   return (
     <Switch>
       <Route exact path='/' render={() => <Redirect to='/plumandpear' />} />
       <Route exact path='/plumandpear' component={Home} />
-      <Route exact path='/shop' render={() => <Shop admin={admin} /> } />
+      <Route exact path='/shop' render={() => <Shop admin={admin} userInfo={userInfo} /> } />
       <Route exact path='/signup' component={Signup} />
       <Route exact path='/login' render={() => <Login setCurrentUser={setCurrentUser}/>} />
       <Route path='/admin/addprod' render={() => 

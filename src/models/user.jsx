@@ -15,13 +15,17 @@ class UserModel {
   //   return axios.post(endPoint, data)
   // }
   
-  // static editUser = (id, data) => {
-  //   return axios.put(`${endPoint}/${id}`, data)
-  // }
+  static editUser = (id, data) => {
+    return axios.put(`${endPoint}/${id}`, data)
+  }
+  static toggleFav = (id, prod, direction) => {
+    return axios.put(`${endPoint}/fav/${id}/${direction}`, prod)
+  }
 
   // static revmoveUser = (id) => {
   //   return axios.delete(`${endPoint}/${id}`)
   // }
+
 }
 
 export default UserModel;
