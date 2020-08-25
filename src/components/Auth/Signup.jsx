@@ -1,6 +1,7 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
+import '../../App.css'
 
 class Signup extends React.Component {
   state = {
