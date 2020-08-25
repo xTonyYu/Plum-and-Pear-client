@@ -13,7 +13,7 @@ const Navibar = ({currentUser, admin, logout}) => {
         </NavLink>
         <ul className="nav-list">
           <li className="nav-item">
-            <NavLink className="nav-link" exact to='/'>Shop</NavLink>
+            <NavLink className="nav-link" exact to='/shop'>Shop</NavLink>
           </li>
         {admin && (
           <>

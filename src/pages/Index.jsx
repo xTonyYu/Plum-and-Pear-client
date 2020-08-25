@@ -1,22 +1,9 @@
 import React from 'react'
-import ProductModel from '../models/product'
 import IndexItem from '../components/IndexItem/IndexItem'
 import '../App.css'
 
 function Index(props) {
 // class Index extends React.Component {
-  // removeProduct = (id, prodType) => {
-  //   // alert('In Index')
-  //   ProductModel.revmoveProduct(id)
-  //   .then(res => console.log(res))
-  //   .catch(err => console.log('err deleting...', err))
-  //   // this.getProdByType(prodType)
-  //   // .then(prod => {
-  //   //   const relatedProducts = prod.data;
-  //     // this.props.history.push({pathname: '/admin/index', removeProduct: this.removeProduct, state: relatedProducts})
-  //   // })
-  //   this.props.history.push('/admin')
-  // }
 
   // render() {
     console.log(props);

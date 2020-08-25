@@ -102,10 +102,10 @@ form {
 }
 
 label {
-  display: inline-block;
+  display: block;
   margin-bottom: 8px;
 }
-;
+
 input[type="text"],
 input[type="number"],
 textarea,

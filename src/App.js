@@ -58,7 +58,7 @@ class App extends React.Component {
       <React.Fragment>
         <Navibar currentUser={this.state.currentUser} admin={this.state.admin} logout={this.logout} />
         <main>
-          <Routes currentUser={this.currentUser} setCurrentUser={this.setCurrentUser} admin={this.state.admin} />
+          <Routes currentUser={this.state.currentUser} setCurrentUser={this.setCurrentUser} admin={this.state.admin} />
         </main>
       </React.Fragment>    
     );
