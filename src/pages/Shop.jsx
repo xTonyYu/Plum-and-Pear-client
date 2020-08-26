@@ -58,7 +58,9 @@ class Shop extends React.Component {
   
   render() {
     const displayProducts = this.state.products.map(prod => {
-        const fav = this.state.userInfo.favorite.includes(prod._id) ? 'heart' : ''
+        const userInfoExist = this.state.userInfo.favorite || []
+        const fav = userInfoExist.includes(prod._id) ? 'heart' : ''
+        // const fav = 'heart'
         return <IndexItem prod={prod} userInfo={this.state.userInfo} toggleFav={this.toggleFav} fav={fav} key={prod._id} currentUser={this.props.currentUser} admin={this.props.admin} />
     })
     // console.log("UserInfo: ", this.state.userInfo);
@@ -67,7 +69,7 @@ class Shop extends React.Component {
       <>
         <section className="products">
           <div className="title">
-              <div className="card ind-name border">
+              <div className=" ind-name border">
                   <h2>Unique and Artistic</h2>
               </div>
           </div>

@@ -35,7 +35,7 @@ export default ({currentUser, userInfo, setCurrentUser, admin}) => {
 
       {/* 404 Route */}
       <Route path='*' render={() => (
-                <div>
+                <div className="container">
                   <h2>404 ERR </h2>
                   <p>GO BACK
                   <Link to='/plumandpear'>Go back to home</Link>

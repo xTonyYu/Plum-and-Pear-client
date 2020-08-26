@@ -1,6 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
+:root {
+  --plum: rgb(206,149,218);
+  --dark-plum: rgb(66, 27,73);
+  --yellow-pear: rgb(197,170,89);
+  --pear: rgb(201, 207, 107);
+  --green: rgb(71, 101, 69);
+}
 
 * {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
 }
 body {
   margin: 0;
@@ -10,6 +20,11 @@ main {
   justify-content: center;
   width: 100vw;
   padding-top: 60px;
+  background-image: url('/images/hero_2.jpg');
+  background-position: center;
+  background-position-x: 45%;
+  background-repeat: no-repeat;
+  min-height: calc(100vh - 60px);
 }
 .container {
   width: 60vw;
@@ -61,6 +76,29 @@ h2 {
   }
 }
 
+
+/* Home  */
+form,
+.products,
+.dash-container,
+.add-container,
+.home-container {
+  width: 100%;
+  min-height: calc(100vh - 100px);
+  padding-bottom: 30px;
+}
+
+svg {
+  height: calc(100vh - 200px);
+  width: 99vw;
+}
+path {
+  fill: transparent;
+}
+.home-text {
+  font-size: 20px;
+}
+
 /* Dashboard */
 .dash-container {
   width: 90vw;
@@ -70,6 +108,9 @@ h2 {
 /* Index page */
 .show-photo, .photo {
   height: 100px;
+  width: 80px;
+  object-position: center;
+  object-fit: cover;
 }
 
 .products {
@@ -77,7 +118,7 @@ h2 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px
+  /* padding: 20px */
 }
 .title {
   display: flex;
@@ -114,6 +155,7 @@ input[id="firstname"],
 input[id="lastname"],
 input[type="email"],
 input[type="password"] {
+  box-sizing: border-box;
   display: block;
   width: 100%;
   padding: 8px;

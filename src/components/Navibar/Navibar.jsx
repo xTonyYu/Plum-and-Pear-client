@@ -9,7 +9,7 @@ const Navibar = ({currentUser, admin, logout}) => {
     <nav>
       <div className="container">
         <NavLink className="logo" exact to='/' >
-          <div>Logo</div>
+          <div ><img src="/images/Logo.svg" alt="logo" id="logo" /></div>
         </NavLink>
         <ul className="nav-list">
           <li className="nav-item">
@@ -18,10 +18,10 @@ const Navibar = ({currentUser, admin, logout}) => {
         {admin && (
           <>
           <li className="nav-item">
-            <NavLink className="nav-link" exact to='/admin'>{admin} Dashboard</NavLink>
+            <NavLink className="nav-link" exact to='/admin'>Dashboard</NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" exact to='/admin/addprod'>Add Product</NavLink>
+            <NavLink className="nav-link" exact to='/admin/addprod'>Add</NavLink>
           </li>
           </>
         )}
