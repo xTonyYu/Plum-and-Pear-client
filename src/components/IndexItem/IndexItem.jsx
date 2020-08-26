@@ -25,7 +25,10 @@ class IndexItem extends React.Component {
         <div className="table-cell row-likes" >Likes {this.props.prod.liked}</div>
 
         {this.props.currentUser && (
-        <button onClick={() => this.props.toggleFav(this.props.userInfo._id, this.props.prod)} type="button" className={favStatus} id="fav">Fav</button>
+        <>
+        <button onClick={() => this.props.toggleFav(this.props.userInfo._id, this.props.prod)} type="button" className={favStatus} id="fav"><img src="./icons/heart.png" alt="heart" className={this.props.fav} id="heart" /></button>
+        
+        </>
         )}
 
         <div className="table-cell row-price-cost">

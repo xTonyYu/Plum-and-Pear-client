@@ -56,14 +56,26 @@
 .btn {
   margin: 0 10px;
 }
+
 #fav {
-  padding: 5px;
+  padding: 3px;
   background-color: lightgrey;
+  width: 25px;
+  height: 25px;
+  border-radius: 15px;
 }
+.heart,
 #fav.heart  {
   /* background-image: url('./icons/red-heart.png'); */
-  background-color: coral;
+  background-color: rgb(255, 139, 118);
 }
+#heart {
+  width: 90%;
+  height: 90%;
+  margin: 0;
+  border-radius: 5px;
+}
+
 
 @media only screen and (max-width: 650px) {
   .row-price-cost {

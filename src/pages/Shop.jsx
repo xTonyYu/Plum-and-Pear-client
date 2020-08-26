@@ -61,9 +61,8 @@ class Shop extends React.Component {
         const fav = this.state.userInfo.favorite.includes(prod._id) ? 'heart' : ''
         return <IndexItem prod={prod} userInfo={this.state.userInfo} toggleFav={this.toggleFav} fav={fav} key={prod._id} currentUser={this.props.currentUser} admin={this.props.admin} />
     })
-    console.log("UserInfo: ", this.state.userInfo);
-    console.log("UserInfo from storage: ", localStorage.getItem('foundUser'));
-    console.log("Products", this.state.products);
+    // console.log("UserInfo: ", this.state.userInfo);
+    // console.log("Products", this.state.products);
     return (
       <>
         <section className="products">
