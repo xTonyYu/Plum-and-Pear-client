@@ -94,7 +94,7 @@ class Products extends React.Component {
   render() { 
 
     return (
-      <div className="dash-container">
+      <div className="dash-container container">
         <h1>Manager's Dashboard</h1>
         <DisplayCards 
           products={this.state.products} 

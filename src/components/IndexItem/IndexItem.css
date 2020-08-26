@@ -12,11 +12,11 @@
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
-  border: solid 3px steelblue;
+  border: solid 3px var(--dark-plum);
   border-radius: 5px;
   box-shadow: 4px 4px 3px;
   padding: 10px;
-  margin: 2px;
+  margin: 6px;
 }
 .table-cell {
   /* display: inline-block; */
@@ -29,7 +29,7 @@
   width: 20%;
   min-width: 200px;
 }
-.row-status {
+.row-likes {
   margin: 0;
   width: 7%;
   min-width: 80px;
@@ -56,6 +56,26 @@
 .btn {
   margin: 0 10px;
 }
+
+#fav {
+  padding: 3px;
+  background-color: lightgrey;
+  width: 25px;
+  height: 25px;
+  border-radius: 15px;
+}
+.heart,
+#fav.heart  {
+  /* background-image: url('/icons/red-heart.png'); */
+  background-color: rgb(255, 139, 118);
+}
+#heart {
+  width: 90%;
+  height: 90%;
+  margin: 0;
+  border-radius: 5px;
+}
+
 
 @media only screen and (max-width: 650px) {
   .row-price-cost {

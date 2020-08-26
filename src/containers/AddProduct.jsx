@@ -30,7 +30,7 @@ class AddProduct extends React.Component {
     
     return (
       <>
-      <div className="container">
+      <div className="add-container container">
         <h2>Add New Product</h2>
         <form onSubmit={this.handleSubmit}>
           <div>

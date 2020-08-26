@@ -1,6 +1,6 @@
 nav {
   background-color: rgb(143, 229, 255);
-  color: #fff;
+  background-color: var(--plum);
   margin-bottom: 20px;
   position: fixed;
 }
@@ -14,36 +14,49 @@ nav .container {
 }
 
 .logo {
-  color: #fff;
+  color: var(--plum);
   text-decoration: none;
+}
+#logo {
+  height: 40px;
 }
 
 .logo h1 {
   font-size: 30px;
   padding: 0;
   margin: 0;
-  color: #fff;
+  color: var(--dark-plum);
 }
 
 .nav-list {
   list-style: none;
   display: flex;
   margin: 0;
+  overflow: scroll;
 }
 
 .nav-item {
   margin-right: 10px;
   cursor: pointer;
+  box-sizing: border-box;
 }
 
 .nav-link {
   display: block;
-  color: #fff;
-  padding: 10px;
+  color: black;
+  padding: 10px 0 10px;
+  padding-bottom: 5px;
   text-decoration: none;
+  letter-spacing: 1px;
+  /* font-size: 16px; */
+  font-weight: 400;
 }
 
-.nav-link:hover,
+.nav-link:hover {
+  color: var(--pear);
+  border-bottom: var(--pear) solid 3px;
+}
 .nav-link.active {
-  border-bottom: #004D99 solid 2px;
+  color: var(--green);
+  border-bottom: var(--green) solid 3px;
 }

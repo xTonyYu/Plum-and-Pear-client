@@ -19,10 +19,10 @@ class Login extends React.Component {
     e.preventDefault()
     axios.post(`${process.env.REACT_APP_API}/auth/login`, this.state)
     .then((res) => {
-      console.log(res.config.data)
+      console.log(res.data.foundUser)
       let admin = res.config.data.includes(`AdminX`)
       console.log("admin: ", admin);
-      this.props.setCurrentUser(res.data.token, admin)
+      this.props.setCurrentUser(res.data.token, admin, res.data.foundUser)
       this.props.history.push('./')
     })
     .catch(err => console.log('err login...', err))

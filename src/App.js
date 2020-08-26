@@ -11,6 +11,7 @@ import './App.css';
 class App extends React.Component {
   state = {
     currentUser: '',
+    userInfo: {},
     admin: false,
   }
 
@@ -21,12 +22,14 @@ class App extends React.Component {
     }
     let token = localStorage.getItem('token')
     let admin = localStorage.getItem('admin')
+    let foundUser = localStorage.getItem('foundUser')
     if (token) {
       setAuthHeader(token)
       const decoded = jwt_decode(token)
       this.setState({
         currentUser: decoded.id, 
         admin: admin, 
+        userInfo: foundUser,
       })
     } else {
       this.setState({admin: false})
@@ -34,22 +37,25 @@ class App extends React.Component {
     console.log("admin in Comp Did Mount...", admin)
   }
 
-  setCurrentUser= (token, admin) => {
+  setCurrentUser= (token, admin, foundUser) => {
     localStorage.setItem('token', token)
     localStorage.setItem('admin', admin)
+    localStorage.setItem('foundUser', foundUser)
     setAuthHeader(token)
     const decoded = jwt_decode(token)
     this.setState({
       currentUser: decoded.id, 
       admin: admin,
+      userInfo: foundUser,
     })
   }
   
   logout = () => {
     localStorage.removeItem('token')
     localStorage.removeItem('admin')
+    localStorage.removeItem('foundUser')
     setAuthHeader()
-    this.setState({currentUser: '', admin: false})
+    this.setState({currentUser: '', userInfo: {}, admin: false})
     this.props.history.push('/')
   }
 
@@ -58,7 +64,7 @@ class App extends React.Component {
       <React.Fragment>
         <Navibar currentUser={this.state.currentUser} admin={this.state.admin} logout={this.logout} />
         <main>
-          <Routes currentUser={this.state.currentUser} setCurrentUser={this.setCurrentUser} admin={this.state.admin} />
+          <Routes currentUser={this.state.currentUser} userInfo={this.state.userInfo} setCurrentUser={this.setCurrentUser} admin={this.state.admin} />
         </main>
       </React.Fragment>    
     );

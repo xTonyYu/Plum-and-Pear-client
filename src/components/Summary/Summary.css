@@ -2,10 +2,20 @@
   margin: 10px;
   min-width: 220px;
   background-color:  rgb(182, 238, 255);
+  border: solid 3px var(--dark-plum);
+  border-radius: 5px;
+  box-shadow: 4px 4px 3px;
+  padding: 10px;
+  margin: 6px;
 }
 
 .card-body {
   padding: 20px;
+}
+.card-title span {
+  color: var(--dark-plum);
+  background-color: var(--plum);
+  padding: 2px 4px;
 }
 
 .dash-btn-grp {

@@ -7,7 +7,7 @@ function Summary(props) {
     return (
       <div className="card dashcard border">
         <div className="card-body">
-          <h3 className="card-title"><a className="lk-rm" href="/<%= type.name %>">{props.prod.type}</a></h3>
+          <h3 className="card-title"><span>{props.prod.type}</span>Products</h3>
           <p>Quantity: {props.prod.totQty}</p>
           <p>Average Price: {props.prod.avgPrice}</p>
           <p>Average Cost: {props.prod.avgCost}</p>
