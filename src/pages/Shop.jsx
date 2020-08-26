@@ -29,11 +29,9 @@ class Shop extends React.Component {
     let direction = '';
     if (!favAlready) {
       product.liked += 1
-      console.log('addFav')
       direction = 'add'
     } else if (product.liked > 1) {
       product.liked -= 1 
-      console.log('removeFav')
       direction = 'remove'
     } else {
       return
@@ -60,9 +58,11 @@ class Shop extends React.Component {
   
   render() {
     const displayProducts = this.state.products.map(prod => {
-        return <IndexItem prod={prod} userInfo={this.state.userInfo} toggleFav={this.toggleFav} key={prod._id} admin={this.props.admin} />
+        const fav = this.state.userInfo.favorite.includes(prod._id) ? 'heart' : ''
+        return <IndexItem prod={prod} userInfo={this.state.userInfo} toggleFav={this.toggleFav} fav={fav} key={prod._id} currentUser={this.props.currentUser} admin={this.props.admin} />
     })
     console.log("UserInfo: ", this.state.userInfo);
+    console.log("UserInfo from storage: ", localStorage.getItem('foundUser'));
     console.log("Products", this.state.products);
     return (
       <>

@@ -56,6 +56,14 @@
 .btn {
   margin: 0 10px;
 }
+#fav {
+  padding: 5px;
+  background-color: lightgrey;
+}
+#fav.heart  {
+  /* background-image: url('./icons/red-heart.png'); */
+  background-color: coral;
+}
 
 @media only screen and (max-width: 650px) {
   .row-price-cost {

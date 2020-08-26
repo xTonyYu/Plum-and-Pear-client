@@ -14,7 +14,7 @@ export default ({currentUser, userInfo, setCurrentUser, admin}) => {
     <Switch>
       <Route exact path='/' render={() => <Redirect to='/plumandpear' />} />
       <Route exact path='/plumandpear' component={Home} />
-      <Route exact path='/shop' render={() => <Shop admin={admin} userInfo={userInfo} /> } />
+      <Route exact path='/shop' render={() => <Shop admin={admin} userInfo={userInfo} currentUser={currentUser} /> } />
       <Route exact path='/signup' component={Signup} />
       <Route exact path='/login' render={() => <Login setCurrentUser={setCurrentUser}/>} />
       <Route path='/admin/addprod' render={() => 

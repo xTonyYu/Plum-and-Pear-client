@@ -16,15 +16,17 @@ class IndexItem extends React.Component {
   // }
 
   render() {
-    console.log(this.props.prod._id)
+    const favStatus = 'btn btn-secondary fav-btn ' + this.props.fav
     return (
       <>
       <div className="table-row border">
         <div className="show-photo border"><img src={this.props.prod.image} className="photo border" alt-text={this.props.prod.name} /></div>
         <div className="table-cell row-name" >{this.props.prod.name}</div>
-        
-    <button onClick={() => this.props.toggleFav(this.props.userInfo._id, this.props.prod)} type="button" className="btn btn-secondary fav-btn">Fav {this.props.prod.liked}</button>
+        <div className="table-cell row-likes" >Likes {this.props.prod.liked}</div>
 
+        {this.props.currentUser && (
+        <button onClick={() => this.props.toggleFav(this.props.userInfo._id, this.props.prod)} type="button" className={favStatus} id="fav">Fav</button>
+        )}
 
         <div className="table-cell row-price-cost">
             <div className="table-cell row-price">Price: { Intl.NumberFormat('en-US', currencyStyle).format(this.props.prod.price) } </div>
