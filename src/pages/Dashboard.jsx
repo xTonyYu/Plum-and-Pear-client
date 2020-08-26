@@ -1,4 +1,5 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
 import ProductModel from '../models/product'
 import UserModel from '../models/user'
 import DisplayCards from '../components/DisplayCards/DisplayCards'
@@ -80,7 +81,7 @@ class Products extends React.Component {
       })
       console.log(products)
       this.setState({products})
-      // this.props.history.push('/admin')
+      this.props.history.push('/admin')
     })
     .catch(err => console.log('err deleting...', err))
     // this.getProdByType(prodType)
@@ -100,10 +101,11 @@ class Products extends React.Component {
           users={this.state.users} 
           removeProduct={this.removeProduct}
           editProduct={this.editProduct}
+          admin={this.props.admin}
         />
       </div>
     )
   }
 }
 
-export default Products;
+export default withRouter(Products);

@@ -1,26 +1,38 @@
 import React from 'react';
 import { Switch, Route, Redirect, Link } from 'react-router-dom'
 import Home from '../pages/Home'
+import Shop from '../pages/Shop'
 import Login from '../components/Auth/Login'
+import Signup from '../components/Auth/Signup'
 import AddProduct from '../containers/AddProduct'
 import EditProduct from '../containers/EditProduct'
 import Index from '../pages/Index'
 import Dashboard from '../pages/Dashboard'
 
-const routes = (props) => {
+export default ({currentUser, setCurrentUser, admin}) => {
   return (
     <Switch>
       <Route exact path='/' render={() => <Redirect to='/plumandpear' />} />
       <Route exact path='/plumandpear' component={Home} />
-      <Route exact path='/login' render={() => <Login setCurrentUser={props.setCurrentUser}/>} />
+      <Route exact path='/shop' render={() => <Shop admin={admin} /> } />
+      <Route exact path='/signup' component={Signup} />
+      <Route exact path='/login' render={() => <Login setCurrentUser={setCurrentUser}/>} />
+      <Route path='/admin/addprod' render={() => 
+        admin ? <AddProduct /> : <Redirect to='/login' />
+      }/>
 
-  {/* <Route exact path='/admin/addprod' render={() => <AddProduct remove={Dashboard.removeProduct}/> }/> */}
-
-      <Route exact path='/admin/addprod' component={AddProduct} />
       <Route exact path='/admin/editprod' component={EditProduct} />
+      {/* <Route exact path='/admin/editprod' render={() => 
+        admin ? <EditProduct /> : <Redirect to='/login' />
+      } /> */}
       <Route exact path='/admin/index' component={Index} />
-      <Route exact path='/admin' component={Dashboard} />
-      {/* <Route path='/plumandpear/products' component={Products} /> */}
+      {/* <Route exact path='/admin/index' render={() => 
+        admin ? <Index /> : <Redirect to='/login' />
+      } /> */}
+      <Route exact path='/admin' render={() => 
+        admin ? <Dashboard admin={admin} /> : <Redirect to='/login' />
+      } />
+
       {/* 404 Route */}
       <Route path='*' render={() => (
                 <div>
@@ -33,4 +45,4 @@ const routes = (props) => {
   )
 }
 
-export default routes;
+// export default routes;

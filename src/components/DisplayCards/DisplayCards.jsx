@@ -7,7 +7,7 @@ const formatToCurrency = function formatToCurrency(variable, string, currencySty
     return Intl.NumberFormat(string, currencyStyle).format(variable);
 }
 
-function DisplayCards({products, users, removeProduct, editProduct}) {
+function DisplayCards({products, users, removeProduct, editProduct, admin}) {
   // user section
   // const total = users.length;
   // const userCards = users.map(user => {
@@ -16,7 +16,6 @@ function DisplayCards({products, users, removeProduct, editProduct}) {
 
   // summarizing product price and cost by product type
   const prodTypeSumm = {};
-  console.log(products)
   products.map(prod => {
     let productType;
     if (prod.prodType in prodTypeSumm) {
@@ -53,8 +52,7 @@ function DisplayCards({products, users, removeProduct, editProduct}) {
   
   const productCards = arrProdTypeSumm.map(prod => {
     const relatedProducts = products.filter(product => (product.prodType === prod.type))
-    // console.log(removeProduct)
-    return <Summary prod={prod} key={prod.type} relatedProducts={relatedProducts} removeProduct={removeProduct} editProduct={editProduct} />
+    return <Summary prod={prod} key={prod.type} relatedProducts={relatedProducts} removeProduct={removeProduct} editProduct={editProduct} admin={admin} />
     }
   )
 

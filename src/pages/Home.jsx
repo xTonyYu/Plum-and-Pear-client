@@ -1,5 +1,6 @@
 import React from 'react'
-// import ProductModel from '../models/product'
+import ProductModel from '../models/product'
+import Routes from '../config/routes';
 // import DisplayCards from '../components/DisplayCards/DisplayCards'
 
 class Home extends React.Component {
@@ -7,14 +8,11 @@ class Home extends React.Component {
     products: [],
   }
 
-  componentDidMount() {
-    console.log('HOME page Comp Did Mount');
-  }
-
   render() {
     return (
       <div className="container">
         <h1>Plum and Pear Home</h1>
+        {/* <Routes products={this.state.products} /> */}
       </div>
     )
   }
