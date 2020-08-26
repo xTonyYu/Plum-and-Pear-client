@@ -11,6 +11,9 @@ class UserModel {
     return axios.get(`${endPoint}/${id}`)
   }
 
+  static getUserWithAttchment = (id) => {
+    return axios.get(`${endPoint}/${id}/withattachment`)
+  }
   // static addUser = (data) => {
   //   return axios.post(endPoint, data)
   // }

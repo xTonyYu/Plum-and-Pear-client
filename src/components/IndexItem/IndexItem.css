@@ -76,6 +76,11 @@
   border-radius: 5px;
 }
 
+#cart {
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+}
 
 @media only screen and (max-width: 650px) {
   .row-price-cost {

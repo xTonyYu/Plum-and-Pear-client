@@ -3,6 +3,7 @@ nav {
   background-color: var(--plum);
   margin-bottom: 20px;
   position: fixed;
+  z-index: 10;
 }
 
 nav .container {
@@ -45,18 +46,21 @@ nav .container {
   display: block;
   color: black;
   padding: 10px 0 10px;
-  padding-bottom: 5px;
+  padding-bottom: 1px;
   text-decoration: none;
   letter-spacing: 1px;
   /* font-size: 16px; */
   font-weight: 400;
+  z-index: 10;
 }
 
 .nav-link:hover {
   color: var(--pear);
   border-bottom: var(--pear) solid 3px;
+  z-index: 10;
 }
 .nav-link.active {
   color: var(--green);
   border-bottom: var(--green) solid 3px;
+  z-index: 10;
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Switch, Route, Redirect, Link } from 'react-router-dom'
 import Home from '../pages/Home'
+import Cart from '../pages/Cart'
 import Shop from '../pages/Shop'
 import Login from '../components/Auth/Login'
 import Signup from '../components/Auth/Signup'
@@ -10,10 +11,12 @@ import Index from '../pages/Index'
 import Dashboard from '../pages/Dashboard'
 
 export default ({currentUser, userInfo, setCurrentUser, admin}) => {
+  console.log("User info in Routes...", userInfo)
   return (
     <Switch>
       <Route exact path='/' render={() => <Redirect to='/plumandpear' />} />
       <Route exact path='/plumandpear' component={Home} />
+      <Route exact path='/cart' render={() => <Cart admin={admin} userInfo={userInfo} currentUser={currentUser} /> } />
       <Route exact path='/shop' render={() => <Shop admin={admin} userInfo={userInfo} currentUser={currentUser} /> } />
       <Route exact path='/signup' component={Signup} />
       <Route exact path='/login' render={() => <Login setCurrentUser={setCurrentUser}/>} />
