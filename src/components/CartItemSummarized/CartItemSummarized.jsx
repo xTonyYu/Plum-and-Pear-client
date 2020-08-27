@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 // importing Stripe API
 import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
-import CheckoutForm from '../CheckoutForm/CheckoutForm'
+import CheckoutForm from '../Stripe/CheckoutForm'
 
 import CartItem from '../CartItem/CartItem'
 
+// const stripePromise = loadStripe(process.env.STRIPE_PUBLISHABLE_KEY);
 const stripePromise = loadStripe('pk_test_51HKd1qFxosFcUDRDfxXhRwFz4kNnu6schUawTEI4c3TOue7ezWNhB7NQ1fshiEIrBl2sc6CHLrhFr4T8XXjr475600fVxDizVg');
 const currencyStyle = { style: 'currency', currency: 'USD' };
 const formatToCurrency = function formatToCurrency(variable, string, currencyStyle) {
@@ -22,7 +23,8 @@ function CartItemSummarized({ userInfo, cart, currentUser}) {
     let productName;
     if (item.prodName in prodNameSumm) {
       productName = prodNameSumm[item.prodName]
-      productName.totPrice += item.price
+      productName.totPrice += item.pricel
+
       productName.totQty += 1
     } else {
       prodNameSumm[item.prodName] = {};
@@ -47,6 +49,7 @@ function CartItemSummarized({ userInfo, cart, currentUser}) {
     cartTotalQty += item.totQty
     return <CartItem prod={item} key={item.name} />
   })
+  cartTotalPriceRaw = cartTotalPriceRaw.toFixed(2)
   const cartTotalPriceUSD = formatToCurrency(cartTotalPriceRaw, 'en-US', currencyStyle);
   console.log(cartTotalPriceUSD, cartTotalQty);
 
@@ -58,7 +61,7 @@ function CartItemSummarized({ userInfo, cart, currentUser}) {
         <div className="table-cell row-quantity">Qty: { Intl.NumberFormat('en-US').format(cartTotalQty) }</div>
         <div className="table-cell row-price">Total Price: {cartTotalPriceUSD} </div>
         <Elements stripe={stripePromise}>
-          <CheckoutForm />
+          <CheckoutForm cartTotalPriceRaw={cartTotalPriceRaw} />
         </Elements>
       </div>
     </div>

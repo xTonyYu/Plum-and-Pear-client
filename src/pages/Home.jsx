@@ -1,6 +1,4 @@
 import React from 'react'
-import ProductModel from '../models/product'
-import Routes from '../config/routes';
 // import DisplayCards from '../components/DisplayCards/DisplayCards'
 
 class Home extends React.Component {

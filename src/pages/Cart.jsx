@@ -1,6 +1,5 @@
 import React from 'react'
 import UserModel from '../models/user'
-import CartItemModel from '../models/cartitem'
 import CartItemSummarized from '../components/CartItemSummarized/CartItemSummarized'
 import '../App.css'
 

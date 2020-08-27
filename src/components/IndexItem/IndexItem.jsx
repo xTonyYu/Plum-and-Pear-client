@@ -22,7 +22,7 @@ class IndexItem extends React.Component {
       <div className="table-row border">
         <div className="show-photo border"><img src={this.props.prod.image} className="photo border" alt-text={this.props.prod.name} /></div>
         <div className="table-cell row-name" >{this.props.prod.name}</div>
-        <div className="table-cell row-likes" >Likes {this.props.prod.liked}</div>
+        <div className="table-cell row-likes" >Likes: {this.props.prod.liked}</div>
 
         {this.props.currentUser && (
         <>
