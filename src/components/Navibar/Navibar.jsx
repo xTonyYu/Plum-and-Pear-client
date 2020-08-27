@@ -22,7 +22,7 @@ const Navibar = ({currentUser, admin, logout}) => {
           <li className="nav-item">
             <NavLink className="nav-link" exact to='/shop'>Shop</NavLink>
           </li>
-        {admin && (
+        {(admin && admin !== 'false') && (
           <>
           <li className="nav-item">
             <NavLink className="nav-link" exact to='/admin'>{admin}Dashboard</NavLink>

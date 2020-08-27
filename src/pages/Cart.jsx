@@ -1,8 +1,7 @@
 import React from 'react'
-import ProductModel from '../models/product'
 import UserModel from '../models/user'
 import CartItemModel from '../models/cartitem'
-import IndexItem from '../components/IndexItem/IndexItem'
+import CartItemSummarized from '../components/CartItemSummarized/CartItemSummarized'
 import '../App.css'
 
 class Cart extends React.Component {
@@ -13,26 +12,21 @@ class Cart extends React.Component {
   }
 
   componentDidMount() {
-    console.log('Cart page Comp Did Mount');
-    this.getUserWithAttchment()
-    this.getProducts()
+    let foundUserJson = localStorage.getItem('foundUser')
+    let foundUser = JSON.parse(foundUserJson)
+    this.setState({userInfo: foundUser})
+    console.log('Cart page Comp Did Mount', this.state.userInfo);
+    const id = this.state.userInfo._id || this.props.userInfo._iid || foundUser._id
+    this.getUserWithAttchment(id)
   }
 
-  getUserWithAttchment() {
-    UserModel.getUserWithAttchment(this.props.userInfo._id)
+  getUserWithAttchment(id) {
+    UserModel.getUserWithAttchment(id)
     .then(res => {
       console.log("getUserWithAttchment data...", res.data);
-      this.setState({userInfo: res.data})
+      this.setState({userInfo: res.data, cartitems: res.data.cart})
+      localStorage.setItem('foundUser', JSON.stringify(res.data))
     })
-  }
-
-  getProducts() {
-    ProductModel.getAllProducts()
-    .then(prod => {
-      console.log("at Home, data:", prod.data);
-      this.setState({products: prod.data})
-    })
-    .catch (err => console.log('err getting all products...', err))
   }
   
   render() {
@@ -50,6 +44,7 @@ class Cart extends React.Component {
           <div className="title">
               <div className=" ind-name border">
                   <h2>Your Shopping Cart</h2>
+                  <CartItemSummarized userInfo={this.state.userInfo} cart={this.state.cartitems} currentUser={this.props.currentUser} />
               </div>
           </div>
 

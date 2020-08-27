@@ -22,7 +22,8 @@ class App extends React.Component {
     }
     let token = localStorage.getItem('token')
     let admin = localStorage.getItem('admin')
-    let foundUser = localStorage.getItem('foundUser')
+    let foundUserJson = localStorage.getItem('foundUser')
+    let foundUser = JSON.parse(foundUserJson)
     if (token) {
       setAuthHeader(token)
       const decoded = jwt_decode(token)
@@ -40,7 +41,7 @@ class App extends React.Component {
   setCurrentUser= (token, admin, foundUser) => {
     localStorage.setItem('token', token)
     localStorage.setItem('admin', admin)
-    localStorage.setItem('foundUser', foundUser)
+    localStorage.setItem('foundUser', JSON.stringify(foundUser))
     setAuthHeader(token)
     const decoded = jwt_decode(token)
     this.setState({

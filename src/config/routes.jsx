@@ -11,7 +11,6 @@ import Index from '../pages/Index'
 import Dashboard from '../pages/Dashboard'
 
 export default ({currentUser, userInfo, setCurrentUser, admin}) => {
-  console.log("User info in Routes...", userInfo)
   return (
     <Switch>
       <Route exact path='/' render={() => <Redirect to='/plumandpear' />} />

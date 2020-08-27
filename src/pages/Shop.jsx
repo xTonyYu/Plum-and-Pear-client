@@ -13,8 +13,9 @@ class Shop extends React.Component {
   }
 
   componentDidMount() {
-    console.log('Shop page Comp Did Mount');
-    this.setState({userInfo: this.props.userInfo})
+    let foundUserJson = localStorage.getItem('foundUser')
+    let foundUser = JSON.parse(foundUserJson)
+    this.setState({userInfo: foundUser})
     this.getProducts()
   }
 
@@ -48,22 +49,18 @@ class Shop extends React.Component {
     
     UserModel.toggleFav(userid, product, direction)
       .then(res => {
-        const updateUserInfo = this.props.userInfo
-        if (direction === 'add') {
-          updateUserInfo.favorite.push(product._id)
-        } else if (direction === 'remove') {
-          const index = updateUserInfo.favorite.indexOf(product._id)
-          updateUserInfo.favorite.splice(index, 1)
-        }
+        const updateUserInfo = res.data  // res.data would already have the changes
         this.setState({userInfo: updateUserInfo})
+        localStorage.setItem('foundUser', JSON.stringify(updateUserInfo))
       }) 
   }
 
-  addCartItem = (prodname, prodimg, userid) => {
-    console.log(prodname, prodimg, userid)
+  addCartItem = (prodname, price, prodimg, userid) => {
+    console.log(prodname, price, prodimg, userid)
     // adding item to CartItem model
     let itemdata = {
       prodName: prodname,
+      price: price,
       prodImg: prodimg,
       status: 'in cart',
       userid: userid,
@@ -78,14 +75,14 @@ class Shop extends React.Component {
     UserModel.getUserById(userid)
     .then(res => {
       this.setState({userInfo: res.data})
+      localStorage.setItem('foundUser', JSON.stringify(res.data))
     })
   }
   
   render() {
+    const userInfoExist = this.state.userInfo.favorite || []
     const displayProducts = this.state.products.map(prod => {
-        const userInfoExist = this.state.userInfo.favorite || []
         const fav = userInfoExist.includes(prod._id) ? 'heart' : ''
-        // const fav = 'heart'
         return <IndexItem prod={prod} userInfo={this.state.userInfo} toggleFav={this.toggleFav} fav={fav} key={prod._id} currentUser={this.props.currentUser} addCartItem={this.addCartItem} admin={this.props.admin} />
     })
     // console.log("UserInfo: ", this.state.userInfo);

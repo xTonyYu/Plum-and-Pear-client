@@ -23,14 +23,14 @@ function DisplayCards({products, users, removeProduct, editProduct, admin}) {
         productType.totPrice += prod.price * prod.quantity
         productType.totCost += prod.cost * prod.quantity
         productType.totQty += prod.quantity
-      } else {
+    } else {
         prodTypeSumm[prod.prodType] = {};
         productType = prodTypeSumm[prod.prodType]
         productType.type = prod.prodType
         productType.totPrice = prod.price * prod.quantity
         productType.totCost = prod.cost * prod.quantity
         productType.totQty = prod.quantity
-      }
+    }
       productType.avgPrice 
       = productType.totPrice
       / productType.totQty

@@ -8,7 +8,7 @@ const currencyStyle = { style: 'currency', currency: 'USD' }
 
 class IndexItem extends React.Component {
   handleClickDelete = () => {
-    alert('Delete prod id =', this.props.prod._id)
+    console.log('Delete prod id =', this.props.prod._id)
 
   }
   // componentWillUnmount() {
@@ -27,10 +27,9 @@ class IndexItem extends React.Component {
         {this.props.currentUser && (
         <>
         <button onClick={() => this.props.toggleFav(this.props.userInfo._id, this.props.prod)} type="button" className={favStatus} id="fav"><img src="./icons/heart.png" alt="heart" className={this.props.fav} id="heart" /></button>
-        
         <div>
 
-        <img onClick={() => this.props.addCartItem(this.props.prod.name, this.props.prod.image, this.props.userInfo._id )} src="./icons/color-cart.png" className="cart" id="cart" />
+        <img onClick={() => this.props.addCartItem(this.props.prod.name, this.props.prod.price, this.props.prod.image, this.props.userInfo._id )} src="./icons/color-cart.png" className="cart" id="cart" />
         </div>
         
         </>
@@ -46,7 +45,7 @@ class IndexItem extends React.Component {
         </div>
         <div className="table-cell row-quantity">Qty: { Intl.NumberFormat('en-US').format(this.props.prod.quantity) }</div>
         
-        {this.props.admin && (
+        {(this.props.admin && this.props.admin !== 'false') && (
         <div className="table-cell btn-group row-action" role="group" aria-label="Basic example">
             <button onClick={() => this.props.removeProduct(this.props.prod._id, this.props.prod.prodType)} type="button" className="btn btn-secondary delete-btn">Delete</button>
 
