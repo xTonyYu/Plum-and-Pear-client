@@ -12,7 +12,7 @@ class App extends React.Component {
   state = {
     currentUser: '',
     userInfo: {},
-    admin: false,
+    admin: 'false',
   }
 
   componentDidMount() {

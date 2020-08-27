@@ -42,7 +42,7 @@ class Cart extends React.Component {
       <>
         <section className="products">
           <div className="title">
-              <div className=" ind-name border">
+              <div className="container ind-name border">
                   <h2>Your Shopping Cart</h2>
                   <CartItemSummarized userInfo={this.state.userInfo} cart={this.state.cartitems} currentUser={this.props.currentUser} />
               </div>

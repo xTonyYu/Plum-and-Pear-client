@@ -34,9 +34,9 @@ const Navibar = ({currentUser, admin, logout}) => {
         )}
         {currentUser && (
           <>
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <NavLink className="nav-link" exact to='/profile'>Profile</NavLink>
-          </li>
+          </li> */}
           <li className="nav-item">
             <span onClick={logout} className="nav-link" >Logout</span>
           </li>

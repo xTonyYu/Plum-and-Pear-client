@@ -80,7 +80,7 @@ class Shop extends React.Component {
   }
   
   render() {
-    const userInfoExist = this.state.userInfo.favorite || []
+    const userInfoExist = this.state.userInfo ? this.state.userInfo.favorite || [] : []
     const displayProducts = this.state.products.map(prod => {
         const fav = userInfoExist.includes(prod._id) ? 'heart' : ''
         return <IndexItem prod={prod} userInfo={this.state.userInfo} toggleFav={this.toggleFav} fav={fav} key={prod._id} currentUser={this.props.currentUser} addCartItem={this.addCartItem} admin={this.props.admin} />
