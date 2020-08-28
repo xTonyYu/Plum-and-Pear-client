@@ -1,5 +1,6 @@
 import axios from 'axios'
 
+// const endPoint = 'https://plumpear-api.herokuapp.com/api/v1/users'
 const endPoint = 'http://localhost:4000/api/v1/users'
 
 class UserModel {
@@ -11,6 +12,9 @@ class UserModel {
     return axios.get(`${endPoint}/${id}`)
   }
 
+  static getUserWithAttchment = (id) => {
+    return axios.get(`${endPoint}/${id}/withattachment`)
+  }
   // static addUser = (data) => {
   //   return axios.post(endPoint, data)
   // }

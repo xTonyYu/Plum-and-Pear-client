@@ -1,4 +1,5 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
 import ProductModel from '../models/product'
 
 class AddProduct extends React.Component {
@@ -70,4 +71,4 @@ class AddProduct extends React.Component {
   }
 }
 
-export default AddProduct;
+export default withRouter(AddProduct);

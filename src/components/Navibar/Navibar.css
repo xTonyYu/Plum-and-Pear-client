@@ -3,6 +3,7 @@ nav {
   background-color: var(--plum);
   margin-bottom: 20px;
   position: fixed;
+  z-index: 10;
 }
 
 nav .container {
@@ -11,21 +12,36 @@ nav .container {
   justify-content: space-between;
   height: 40px;
   width: 100vw;
+  padding: 4px;
+}
+
+.logo-cart {
+  display: flex;
+  align-items: baseline;
 }
 
 .logo {
   color: var(--plum);
   text-decoration: none;
+
+  display: flex;
 }
 #logo {
   height: 40px;
 }
-
 .logo h1 {
   font-size: 30px;
   padding: 0;
   margin: 0;
   color: var(--dark-plum);
+}
+
+#cart {
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  margin-left: 10px;
+
 }
 
 .nav-list {
@@ -45,18 +61,23 @@ nav .container {
   display: block;
   color: black;
   padding: 10px 0 10px;
-  padding-bottom: 5px;
+  padding-bottom: 1px;
   text-decoration: none;
   letter-spacing: 1px;
   /* font-size: 16px; */
   font-weight: 400;
 }
+.nav-list > *:last-child {
+  padding-right: 5px;
+}
 
 .nav-link:hover {
   color: var(--pear);
   border-bottom: var(--pear) solid 3px;
+  z-index: 10;
 }
 .nav-link.active {
   color: var(--green);
   border-bottom: var(--green) solid 3px;
+  z-index: 10;
 }

@@ -6,14 +6,13 @@ function Index(props) {
 // class Index extends React.Component {
 
   // render() {
-    console.log(props);
-    console.log(props.location.state);
+
+    // console.log(props.location.state);
     const products = props.location.state;
     const displayProducts = products.map(prod => {
       return <IndexItem prod={prod} key={prod._id} removeProduct={props.location.removeProduct} editProduct={props.location.editProduct} admin={props.location.admin} />
     })
 
-    const prod = props.location.state[0];
     return (
       <>
       <section className="products">

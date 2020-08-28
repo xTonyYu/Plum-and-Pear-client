@@ -16,21 +16,21 @@ function DisplayCards({products, users, removeProduct, editProduct, admin}) {
 
   // summarizing product price and cost by product type
   const prodTypeSumm = {};
-  products.map(prod => {
+  const array = products.map(prod => {
     let productType;
     if (prod.prodType in prodTypeSumm) {
         productType = prodTypeSumm[prod.prodType]
         productType.totPrice += prod.price * prod.quantity
         productType.totCost += prod.cost * prod.quantity
         productType.totQty += prod.quantity
-      } else {
+    } else {
         prodTypeSumm[prod.prodType] = {};
         productType = prodTypeSumm[prod.prodType]
         productType.type = prod.prodType
         productType.totPrice = prod.price * prod.quantity
         productType.totCost = prod.cost * prod.quantity
         productType.totQty = prod.quantity
-      }
+    }
       productType.avgPrice 
       = productType.totPrice
       / productType.totQty
@@ -42,6 +42,7 @@ function DisplayCards({products, users, removeProduct, editProduct, admin}) {
       / productType.totQty
       const formatAvgCost = formatToCurrency(productType.avgCost, 'en-US', currencyStyle);
       productType.avgCost = formatAvgCost
+      return prodTypeSumm
     }
   )
 
@@ -49,7 +50,7 @@ function DisplayCards({products, users, removeProduct, editProduct, admin}) {
   for (const type in prodTypeSumm) {
       arrProdTypeSumm.push(prodTypeSumm[type])
   }
-  
+
   const productCards = arrProdTypeSumm.map(prod => {
     const relatedProducts = products.filter(product => (product.prodType === prod.type))
     return <Summary prod={prod} key={prod.type} relatedProducts={relatedProducts} removeProduct={removeProduct} editProduct={editProduct} admin={admin} />

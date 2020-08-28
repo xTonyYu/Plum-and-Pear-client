@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
 :root {
   --plum: rgb(206,149,218);
-  --dark-plum: rgb(66, 27,73);
+  --dark-plum: #421b49;
   --yellow-pear: rgb(197,170,89);
   --pear: rgb(201, 207, 107);
   --green: rgb(71, 101, 69);
+  --blue: rgb(180, 236, 235);
 }
 
 * {
@@ -20,6 +21,7 @@ main {
   justify-content: center;
   width: 100vw;
   padding-top: 60px;
+  /* margin-top: 40px; */
   background-image: url('/images/hero_2.jpg');
   background-position: center;
   background-position-x: 45%;
@@ -96,7 +98,7 @@ path {
   fill: transparent;
 }
 .home-text {
-  font-size: 20px;
+  font-size: 30px;
 }
 
 /* Dashboard */
@@ -116,7 +118,7 @@ path {
 .products {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   /* padding: 20px */
 }
@@ -128,7 +130,7 @@ path {
   color: rgb(33, 37, 41);
 }
 .title .ind-name {
-  background-color: transparent;
+  background-color: var(--blue);
 }
 .title h2 {
   text-align: center;
@@ -181,9 +183,83 @@ input[type="checkbox"] {
   margin-left: 15px;
 }
 
+/* Cart */
+
+.cart-wrapper {
+  width: 75vw;
+}
+.cart-container {
+  width: 70vw;
+  background-color: rgb(250, 245, 245);  
+  padding: 10px;
+  margin: 6px;
+  border-radius: 5px;
+  border: solid 3px var(--dark-plum);
+  box-shadow: 4px 4px 3px;
+  font-size:16px;
+}
+.cart-row {
+  width: 70vw;
+  background-color: rgb(250, 245, 245);  
+  display: flex;
+  padding-top: 10px;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: var(--yellow-pear) solid 1px;
+}
+.table-row {
+  padding: 10px;
+  margin: 6px;
+}
+
+.arrow {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  background-color: var(--plum);
+  border-radius: 15px;
+}
+.grand-total {
+  background-color: rgb(250, 245, 245);  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 69vw;
+  border-top: solid 3px var(--dark-plum);
+  font-size:20px;
+}
+
+.total-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+  width: 100%;
+}
+.cart-price {
+  padding: 10px;
+  border-bottom: solid 3px var(--dark-plum);
+  width: 35%;
+  text-align: center;
+}
+.cart-total {
+  width: 20%
+}
+.cart-quantity {
+  width: 15%;
+}
 
 @media only screen and (max-width: 650px) {
+  .cart-wrapper,
   .container {
     width: 90vw;
+  }
+
+  .grand-total,
+  .cart-row,
+  .cart-container {
+    width: 80vw;
   }
 }

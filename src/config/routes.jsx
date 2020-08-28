@@ -1,6 +1,7 @@
 import React from 'react';
 import { Switch, Route, Redirect, Link } from 'react-router-dom'
 import Home from '../pages/Home'
+import Cart from '../pages/Cart'
 import Shop from '../pages/Shop'
 import Login from '../components/Auth/Login'
 import Signup from '../components/Auth/Signup'
@@ -14,23 +15,28 @@ export default ({currentUser, userInfo, setCurrentUser, admin}) => {
     <Switch>
       <Route exact path='/' render={() => <Redirect to='/plumandpear' />} />
       <Route exact path='/plumandpear' component={Home} />
+      <Route exact path='/cart' render={() => 
+        currentUser
+        ? <Cart admin={admin} userInfo={userInfo} currentUser={currentUser} /> 
+        : <Redirect to='/login' />
+      } />
       <Route exact path='/shop' render={() => <Shop admin={admin} userInfo={userInfo} currentUser={currentUser} /> } />
       <Route exact path='/signup' component={Signup} />
       <Route exact path='/login' render={() => <Login setCurrentUser={setCurrentUser}/>} />
       <Route path='/admin/addprod' render={() => 
-        admin ? <AddProduct /> : <Redirect to='/login' />
+        admin === 'true' ? <AddProduct /> : <Redirect to='/login' />
       }/>
 
       <Route exact path='/admin/editprod' component={EditProduct} />
       {/* <Route exact path='/admin/editprod' render={() => 
-        admin ? <EditProduct /> : <Redirect to='/login' />
+        admin === 'true' ? <EditProduct /> : <Redirect to='/login' />
       } /> */}
       <Route exact path='/admin/index' component={Index} />
       {/* <Route exact path='/admin/index' render={() => 
-        admin ? <Index /> : <Redirect to='/login' />
+        admin === 'true' ? <Index /> : <Redirect to='/login' />
       } /> */}
       <Route exact path='/admin' render={() => 
-        admin ? <Dashboard admin={admin} /> : <Redirect to='/login' />
+        admin === 'true' ? <Dashboard admin={admin} /> : <Redirect to='/login' />
       } />
 
       {/* 404 Route */}
