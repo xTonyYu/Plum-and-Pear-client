@@ -37,7 +37,7 @@ Extras:
 
 Wireframe:
 
-![wireframe](./asset/Wireframe-PlumAndPearStore.png)
+![wireframe](./asset/WIreframe-PlumAndPearStore.png)
 
 ERD:
 
