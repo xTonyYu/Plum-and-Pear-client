@@ -2,6 +2,7 @@ import React from 'react'
 import UserModel from '../models/user'
 import CartItemSummarized from '../components/CartItemSummarized/CartItemSummarized'
 import '../App.css'
+import CartItemModel from '../models/cartitem'
 
 class Cart extends React.Component {
   state = {
@@ -27,23 +28,65 @@ class Cart extends React.Component {
       localStorage.setItem('foundUser', JSON.stringify(res.data))
     })
   }
+
+  increaseCartItem = (prodname, price, prodimg, userid) => {
+    // adding item to CartItem model
+    let itemdata = {
+      prodName: prodname,
+      price: price,
+      prodImg: prodimg,
+      status: 'in cart',
+      userid: userid,
+    }
+    console.log(itemdata)
+    CartItemModel.add(itemdata)
+    .then(res => {
+      console.log(res.data);
+      // get updated user info after adding cart item
+      UserModel.getUserById(userid)
+      .then(res => {
+        const updateUserInfo = res.data  // res.data would already have the changes
+        this.setState({userInfo: updateUserInfo, cartitems: res.data.cart})
+        localStorage.setItem('foundUser', JSON.stringify(updateUserInfo))
+      })
+    })
+    .catch (err => console.log('err adding cart item...', err))
+  }
+
+  reduceCartItem = (prodname, userid) => {
+    CartItemModel.remove(prodname, userid)
+    .then(res => {
+      console.log("Updated User",res.data);
+      const updateUserInfo = res.data  // res.data would already have the changes
+      this.setState({userInfo: updateUserInfo, cartitems: res.data.cart})
+      localStorage.setItem('foundUser', JSON.stringify(updateUserInfo))
+    })
+    .catch (err => console.log('err removing cart item...', err))
+  }
+
+  buyItemsInCart = (prodArr, userid) => {
+    console.log(prodArr, userid)
+    CartItemModel.buy(prodArr, userid)
+    .then(res => {
+      console.log("Updated User",res.data);
+      const updateUserInfo = res.data  // res.data would already have the changes
+      this.setState({userInfo: updateUserInfo, cartitems: res.data.cart})
+      localStorage.setItem('foundUser', JSON.stringify(updateUserInfo))
+    })
+    .catch (err => console.log('err removing cart item...', err))
+  }
   
   render() {
-    // const displayProducts = this.state.products.map(prod => {
-    //     const userInfoExist = this.state.userInfo.favorite || []
-    //     const fav = userInfoExist.includes(prod._id) ? 'heart' : ''
-    //     // const fav = 'heart'
-    //     return <IndexItem prod={prod} userInfo={this.state.userInfo} toggleFav={this.toggleFav} fav={fav} key={prod._id} currentUser={this.props.currentUser} addCartItem={this.addCartItem} admin={this.props.admin} />
-    // })
+
     console.log("UserInfo: ", this.state.userInfo);
-    // console.log("Products", this.state.products);
+    console.log("Products", this.state.cartitems);
     return (
       <>
         <section className="products">
           <div className="title">
-              <div className="container ind-name border">
+              <div className="cart-wrapper ind-name border">
                   <h2>Your Shopping Cart</h2>
-                  <CartItemSummarized userInfo={this.state.userInfo} cart={this.state.cartitems} currentUser={this.props.currentUser} />
+                  <CartItemSummarized userInfo={this.state.userInfo} cart={this.state.cartitems} currentUser={this.props.currentUser} reduceCartItem={this.reduceCartItem} increaseCartItem={this.increaseCartItem} buyItemsInCart={this.buyItemsInCart} />
               </div>
           </div>
 

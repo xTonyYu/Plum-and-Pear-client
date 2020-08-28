@@ -8,15 +8,17 @@ const Navibar = ({currentUser, admin, logout}) => {
   return(
     <nav>
       <div className="container">
-        <NavLink className="logo" exact to='/' >
-          <div ><img src="/images/Logo.svg" alt="logo" id="logo" /></div>
-        </NavLink>
+        <div className="logo-cart">
+          <NavLink className="logo" exact to='/' >
+            <img src="/images/Logo.svg" alt="logo" id="logo" />
+          </NavLink>
 
-        {currentUser && (
-        <NavLink className="cart" exact to='/cart' >
-          <div ><img src="/icons/cart.png" alt="logcarto" id="cart" /></div>
-        </NavLink>
-        )}
+          {currentUser && (
+          <NavLink className="cart" exact to='/cart' >
+            <div className="item-count"><img src="/icons/cart.png" alt="logcarto" id="cart" /></div>
+          </NavLink>
+          )}
+        </div>
         
         <ul className="nav-list">
           <li className="nav-item">
@@ -25,7 +27,7 @@ const Navibar = ({currentUser, admin, logout}) => {
         {(admin && admin !== 'false') && (
           <>
           <li className="nav-item">
-            <NavLink className="nav-link" exact to='/admin'>{admin}Dashboard</NavLink>
+            <NavLink className="nav-link" exact to='/admin'>Dashboard</NavLink>
           </li>
           <li className="nav-item">
             <NavLink className="nav-link" exact to='/admin/addprod'>Add</NavLink>
@@ -48,7 +50,7 @@ const Navibar = ({currentUser, admin, logout}) => {
             <NavLink className="nav-link" exact to='/login'>Login</NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" exact to='/signup'>Sign Up</NavLink>
+            <NavLink className="nav-link" exact to='/signup'>SignUp</NavLink>
           </li>
           </>
         )}

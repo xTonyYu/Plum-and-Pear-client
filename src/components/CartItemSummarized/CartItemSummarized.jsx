@@ -13,7 +13,7 @@ const formatToCurrency = function formatToCurrency(variable, string, currencySty
     return Intl.NumberFormat(string, currencyStyle).format(variable);
 }
 
-function CartItemSummarized({ userInfo, cart, currentUser}) {
+function CartItemSummarized({ userInfo, cart, currentUser, reduceCartItem, increaseCartItem, buyItemsInCart}) {
   console.log(userInfo)
 
   // summarizing items in the cart; grouping same items together
@@ -23,8 +23,7 @@ function CartItemSummarized({ userInfo, cart, currentUser}) {
     let productName;
     if (item.prodName in prodNameSumm) {
       productName = prodNameSumm[item.prodName]
-      productName.totPrice += item.pricel
-
+      productName.totPrice += item.price
       productName.totQty += 1
     } else {
       prodNameSumm[item.prodName] = {};
@@ -34,8 +33,8 @@ function CartItemSummarized({ userInfo, cart, currentUser}) {
       productName.totPrice = item.price
       productName.totQty = 1
     }
-    const formatUnitPrice = formatToCurrency(item.price, 'en-US', currencyStyle);
-      productName.unitPrice = formatUnitPrice
+    // const formatUnitPrice = formatToCurrency(item.price, 'en-US', currencyStyle);
+      productName.unitPrice = item.price
   })
 
   let arrProdNameSumm = [];
@@ -47,7 +46,7 @@ function CartItemSummarized({ userInfo, cart, currentUser}) {
     console.log("2) ProdNameSumm item: ", item); // <<<<<<<<<<<<<<<<<<<<<<<<<<
     cartTotalPriceRaw += item.totPrice
     cartTotalQty += item.totQty
-    return <CartItem prod={item} key={item.name} />
+    return <CartItem prod={item} key={item.name} reduceCartItem={reduceCartItem} increaseCartItem={increaseCartItem} userInfo={userInfo} />
   })
   cartTotalPriceRaw = cartTotalPriceRaw.toFixed(2)
   const cartTotalPriceUSD = formatToCurrency(cartTotalPriceRaw, 'en-US', currencyStyle);
@@ -57,11 +56,13 @@ function CartItemSummarized({ userInfo, cart, currentUser}) {
     <div className="cart-container">
       {cartItems}
       <div className="grand-total">
-        <div className="table-cell row-name" >Grand Total</div>
-        <div className="table-cell row-quantity">Qty: { Intl.NumberFormat('en-US').format(cartTotalQty) }</div>
-        <div className="table-cell row-price">Total Price: {cartTotalPriceUSD} </div>
+        <div className="table-cell total-wrapper">
+          <div className="table-cell cart-total" >Grand Total</div>
+          <div className="table-cell cart-quantity">Qty: { Intl.NumberFormat('en-US').format(cartTotalQty) }</div>
+          <div className="table-cell cart-price">Total Price: {cartTotalPriceUSD} </div>
+        </div>
         <Elements stripe={stripePromise}>
-          <CheckoutForm cartTotalPriceRaw={cartTotalPriceRaw} />
+          <CheckoutForm cartTotalPriceRaw={cartTotalPriceRaw} buyItemsInCart={buyItemsInCart} arrProdNameSumm={arrProdNameSumm} userInfo={userInfo} />
         </Elements>
       </div>
     </div>

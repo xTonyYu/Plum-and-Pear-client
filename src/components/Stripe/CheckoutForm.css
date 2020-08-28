@@ -12,7 +12,7 @@ button {
 }
 
 html {
-  background-color: #6772e5;
+  background-color: var(--blue);
   font-size: 16px;
   /* font-family: Roboto, Open Sans, Segoe UI, sans-serif; */
   font-weight: 500;
@@ -54,14 +54,14 @@ body {
   animation: fade 200ms ease-out;
   background-color: var(--plum);
   padding: 20px 0;
-  /* min-height: auto; */
+  min-height: auto;
 }
 
 .FormGroup {
   margin: 0 15px 20px;
   padding: 0;
   border-style: none;
-  background-color: #7795f8;
+  background-color: var(--blue);
   will-change: opacity, transform;
   box-shadow: 0 6px 9px rgba(50, 50, 93, 0.06), 0 2px 5px rgba(0, 0, 0, 0.08),
     inset 0 1px 0 #829fff;
@@ -85,7 +85,7 @@ body {
   width: 15%;
   min-width: 70px;
   padding: 11px 0;
-  color: #c4f0ff;
+  color: var(--dark-plum);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -108,7 +108,8 @@ body {
   font-size: 16px;
   width: 100%;
   padding: 11px 15px 11px 0;
-  color: #fff;
+
+  color: var(--dark-plum);
   background-color: transparent;
   animation: 1ms void-animation-out;
 }
@@ -132,11 +133,11 @@ body {
   width: calc(100% - 30px);
   height: 40px;
   margin: 40px 15px 0;
-  background-color: #f6a4eb;
+  background-color: var(--plum);
   box-shadow: 0 6px 9px rgba(50, 50, 93, 0.06), 0 2px 5px rgba(0, 0, 0, 0.08),
-    inset 0 1px 0 #ffb9f6;
+    inset 0 5px 0 var(--dark-plum);
   border-radius: 4px;
-  color: #fff;
+  color: var(--dark-plum);
   font-weight: 600;
   cursor: pointer;
   transition: all 100ms ease-in-out;
@@ -172,7 +173,7 @@ body {
   padding: 0 15px;
   font-size: 13px;
   margin-top: 0px;
-  width: 100%;
+  width: 45%;
   transform: translateY(-15px);
   opacity: 0;
   animation: fade 150ms ease-out;

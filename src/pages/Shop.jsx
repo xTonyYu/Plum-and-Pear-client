@@ -16,6 +16,7 @@ class Shop extends React.Component {
     let foundUserJson = localStorage.getItem('foundUser')
     let foundUser = JSON.parse(foundUserJson)
     this.setState({userInfo: foundUser})
+    console.log("1) ", this.state.userInfo);
     this.getProducts()
   }
 
@@ -56,7 +57,6 @@ class Shop extends React.Component {
   }
 
   addCartItem = (prodname, price, prodimg, userid) => {
-    console.log(prodname, price, prodimg, userid)
     // adding item to CartItem model
     let itemdata = {
       prodName: prodname,

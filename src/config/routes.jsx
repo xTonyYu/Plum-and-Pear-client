@@ -27,14 +27,14 @@ export default ({currentUser, userInfo, setCurrentUser, admin}) => {
         admin === 'true' ? <AddProduct /> : <Redirect to='/login' />
       }/>
 
-      {/* <Route exact path='/admin/editprod' component={EditProduct} /> */}
-      <Route exact path='/admin/editprod' render={() => 
+      <Route exact path='/admin/editprod' component={EditProduct} />
+      {/* <Route exact path='/admin/editprod' render={() => 
         admin === 'true' ? <EditProduct /> : <Redirect to='/login' />
-      } />
-      {/* <Route exact path='/admin/index' component={Index} /> */}
-      <Route exact path='/admin/index' render={() => 
+      } /> */}
+      <Route exact path='/admin/index' component={Index} />
+      {/* <Route exact path='/admin/index' render={() => 
         admin === 'true' ? <Index /> : <Redirect to='/login' />
-      } />
+      } /> */}
       <Route exact path='/admin' render={() => 
         admin === 'true' ? <Dashboard admin={admin} /> : <Redirect to='/login' />
       } />
