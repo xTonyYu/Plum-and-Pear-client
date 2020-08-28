@@ -1,68 +1,44 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+Plum & Pear Store is a use case of useing an e-commerce template that serves both the customers and the shop owner.  It provides product infomation, create account, login, and the ability to add porduct to favorite.  The owner has a dashboard to see highlevel information of the inventory and the sales/revenue numbers.  The owner would able to vew, create, update and delete inventory.
 
-In the project directory, you can run:
+Technology: MongoDB, Mongoose, Express, React.js, Node.js, Stripe API
 
-### `npm start`
+User stories:
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+** Customer
+* Able to view all products and product detail
+* Create an account; username, first and last name, email, address
+* Can like or unlike a product
+* Logged in customer can see items they liked
+* Able to add 1 or more products into shopping
+* can reduce quantity of the item in the cart
+* if customer logged out before making purchase, items in the cart will be save for the user
+* can make a purchase via Strip with credit card
+* after purchase, inventory count will be updated accordingly
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+** Owner
+* Login as admin with ablity to update (full CRUD) inventory
+* Able to see a store dashboard that includs inventory summary
+* only admin cann certain page and nav bar changes accordingly
 
-### `npm test`
+Extras:
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* Able to checkout via Paypal/Strips (done)
+* Shopping for Customer - able to add, veiw, update quantity, remove products in the cart (done)
+* Logged in customer can see items in the cart that were left in since last session (done)
+* Able to use Google sheet to update inventory and upload to the app
+* able to download the MongoDB data to Google sheet
+* A switch for owner to change the shop to sell different products and different them for the stories
+* customer wish list
+* Auto welcome email
+* Auto email reciept to customer
+* dashboard includes charts, sales, and profitability
+* upload images
 
-### `npm run build`
+Wireframe:
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![wireframe](./asset/Wireframe-PlumAndPearStore.png)
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+ERD:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+![ERD](./asset/ERD.png)

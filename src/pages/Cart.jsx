@@ -15,7 +15,6 @@ class Cart extends React.Component {
     let foundUserJson = localStorage.getItem('foundUser')
     let foundUser = JSON.parse(foundUserJson)
     this.setState({userInfo: foundUser})
-    console.log('Cart page Comp Did Mount', this.state.userInfo);
     const id = this.state.userInfo._id || this.props.userInfo._iid || foundUser._id
     this.getUserWithAttchment(id)
   }
@@ -23,7 +22,6 @@ class Cart extends React.Component {
   getUserWithAttchment(id) {
     UserModel.getUserWithAttchment(id)
     .then(res => {
-      console.log("getUserWithAttchment data...", res.data);
       this.setState({userInfo: res.data, cartitems: res.data.cart})
       localStorage.setItem('foundUser', JSON.stringify(res.data))
     })
@@ -78,8 +76,6 @@ class Cart extends React.Component {
   
   render() {
 
-    console.log("UserInfo: ", this.state.userInfo);
-    console.log("Products", this.state.cartitems);
     return (
       <>
         <section className="products">

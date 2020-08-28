@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 // importing Stripe API
 import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
@@ -14,7 +14,6 @@ const formatToCurrency = function formatToCurrency(variable, string, currencySty
 }
 
 function CartItemSummarized({ userInfo, cart, currentUser, reduceCartItem, increaseCartItem, buyItemsInCart}) {
-  console.log(userInfo)
 
   // summarizing items in the cart; grouping same items together
   const prodNameSumm = {};
@@ -50,7 +49,6 @@ function CartItemSummarized({ userInfo, cart, currentUser, reduceCartItem, incre
   })
   cartTotalPriceRaw = cartTotalPriceRaw.toFixed(2)
   const cartTotalPriceUSD = formatToCurrency(cartTotalPriceRaw, 'en-US', currencyStyle);
-  console.log(cartTotalPriceUSD, cartTotalQty);
 
   return (
     <div className="cart-container">
