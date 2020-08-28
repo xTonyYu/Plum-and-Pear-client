@@ -1,5 +1,4 @@
 import React from 'react'
-import ProductModel from '../models/product'
 
 class AddProduct extends React.Component {
   state = {

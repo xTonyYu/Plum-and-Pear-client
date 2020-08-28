@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import './Summary.css'
 
 function Summary(props) {
-
+console.log(props);
     return (
       <div className="card dashcard border">
         <div className="card-body">

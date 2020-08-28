@@ -12,21 +12,36 @@ nav .container {
   justify-content: space-between;
   height: 40px;
   width: 100vw;
+  padding: 4px;
+}
+
+.logo-cart {
+  display: flex;
+  align-items: baseline;
 }
 
 .logo {
   color: var(--plum);
   text-decoration: none;
+
+  display: flex;
 }
 #logo {
   height: 40px;
 }
-
 .logo h1 {
   font-size: 30px;
   padding: 0;
   margin: 0;
   color: var(--dark-plum);
+}
+
+#cart {
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  margin-left: 10px;
+
 }
 
 .nav-list {
@@ -51,7 +66,9 @@ nav .container {
   letter-spacing: 1px;
   /* font-size: 16px; */
   font-weight: 400;
-  z-index: 10;
+}
+.nav-list > *:last-child {
+  padding-right: 5px;
 }
 
 .nav-link:hover {

@@ -13,7 +13,6 @@ function Index(props) {
       return <IndexItem prod={prod} key={prod._id} removeProduct={props.location.removeProduct} editProduct={props.location.editProduct} admin={props.location.admin} />
     })
 
-    const prod = props.location.state[0];
     return (
       <>
       <section className="products">

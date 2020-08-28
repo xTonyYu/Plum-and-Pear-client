@@ -1,18 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 // importing Stripe API
 import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
-import CheckoutForm from '../CheckoutForm/CheckoutForm'
+import CheckoutForm from '../Stripe/CheckoutForm'
 
 import CartItem from '../CartItem/CartItem'
 
+// const stripePromise = loadStripe(process.env.STRIPE_PUBLISHABLE_KEY);
 const stripePromise = loadStripe('pk_test_51HKd1qFxosFcUDRDfxXhRwFz4kNnu6schUawTEI4c3TOue7ezWNhB7NQ1fshiEIrBl2sc6CHLrhFr4T8XXjr475600fVxDizVg');
 const currencyStyle = { style: 'currency', currency: 'USD' };
 const formatToCurrency = function formatToCurrency(variable, string, currencyStyle) {
     return Intl.NumberFormat(string, currencyStyle).format(variable);
 }
 
-function CartItemSummarized({ userInfo, cart, currentUser}) {
+function CartItemSummarized({ userInfo, cart, currentUser, reduceCartItem, increaseCartItem, buyItemsInCart}) {
   console.log(userInfo)
 
   // summarizing items in the cart; grouping same items together
@@ -32,8 +33,8 @@ function CartItemSummarized({ userInfo, cart, currentUser}) {
       productName.totPrice = item.price
       productName.totQty = 1
     }
-    const formatUnitPrice = formatToCurrency(item.price, 'en-US', currencyStyle);
-      productName.unitPrice = formatUnitPrice
+    // const formatUnitPrice = formatToCurrency(item.price, 'en-US', currencyStyle);
+      productName.unitPrice = item.price
   })
 
   let arrProdNameSumm = [];
@@ -45,8 +46,9 @@ function CartItemSummarized({ userInfo, cart, currentUser}) {
     console.log("2) ProdNameSumm item: ", item); // <<<<<<<<<<<<<<<<<<<<<<<<<<
     cartTotalPriceRaw += item.totPrice
     cartTotalQty += item.totQty
-    return <CartItem prod={item} key={item.name} />
+    return <CartItem prod={item} key={item.name} reduceCartItem={reduceCartItem} increaseCartItem={increaseCartItem} userInfo={userInfo} />
   })
+  cartTotalPriceRaw = cartTotalPriceRaw.toFixed(2)
   const cartTotalPriceUSD = formatToCurrency(cartTotalPriceRaw, 'en-US', currencyStyle);
   console.log(cartTotalPriceUSD, cartTotalQty);
 
@@ -54,11 +56,13 @@ function CartItemSummarized({ userInfo, cart, currentUser}) {
     <div className="cart-container">
       {cartItems}
       <div className="grand-total">
-        <div className="table-cell row-name" >Grand Total</div>
-        <div className="table-cell row-quantity">Qty: { Intl.NumberFormat('en-US').format(cartTotalQty) }</div>
-        <div className="table-cell row-price">Total Price: {cartTotalPriceUSD} </div>
+        <div className="table-cell total-wrapper">
+          <div className="table-cell cart-total" >Grand Total</div>
+          <div className="table-cell cart-quantity">Qty: { Intl.NumberFormat('en-US').format(cartTotalQty) }</div>
+          <div className="table-cell cart-price">Total Price: {cartTotalPriceUSD} </div>
+        </div>
         <Elements stripe={stripePromise}>
-          <CheckoutForm />
+          <CheckoutForm cartTotalPriceRaw={cartTotalPriceRaw} buyItemsInCart={buyItemsInCart} arrProdNameSumm={arrProdNameSumm} userInfo={userInfo} />
         </Elements>
       </div>
     </div>
