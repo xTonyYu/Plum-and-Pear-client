@@ -50,8 +50,6 @@ function DisplayCards({products, users, removeProduct, editProduct, admin}) {
   for (const type in prodTypeSumm) {
       arrProdTypeSumm.push(prodTypeSumm[type])
   }
-  console.log("array...", array);
-  console.log("arrProdTypeSumm", arrProdTypeSumm);
 
   const productCards = arrProdTypeSumm.map(prod => {
     const relatedProducts = products.filter(product => (product.prodType === prod.type))

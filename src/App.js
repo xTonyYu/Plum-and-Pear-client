@@ -35,7 +35,7 @@ class App extends React.Component {
     } else {
       this.setState({admin: false})
     }
-    console.log("admin in Comp Did Mount...", admin)
+    // console.log("admin in Comp Did Mount...", admin)
   }
 
   setCurrentUser= (token, admin, foundUser) => {

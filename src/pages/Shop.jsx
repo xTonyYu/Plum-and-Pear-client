@@ -16,14 +16,13 @@ class Shop extends React.Component {
     let foundUserJson = localStorage.getItem('foundUser')
     let foundUser = JSON.parse(foundUserJson)
     this.setState({userInfo: foundUser})
-    console.log("1) ", this.state.userInfo);
+    // console.log("1) ", this.state.userInfo);
     this.getProducts()
   }
 
   getProducts() {
     ProductModel.getAllProducts()
     .then(prod => {
-      console.log("at Home, data:", prod.data);
       this.setState({products: prod.data})
     })
     .catch (err => console.log('err getting all products...', err))
