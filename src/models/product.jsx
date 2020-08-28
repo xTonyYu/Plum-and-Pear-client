@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-// const endPoint = 'https://plumpear-api.herokuapp.com/api/v1/products'
-const endPoint = 'http://localhost:4000/api/v1/products'
+const endPoint = 'https://plumpear-api.herokuapp.com/api/v1/products'
+// const endPoint = 'http://localhost:4000/api/v1/products'
 
 class ProductModel {
   static getAllProducts = () => {

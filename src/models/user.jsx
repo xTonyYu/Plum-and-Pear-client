@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-// const endPoint = 'https://plumpear-api.herokuapp.com/api/v1/users'
-const endPoint = 'http://localhost:4000/api/v1/users'
+const endPoint = 'https://plumpear-api.herokuapp.com/api/v1/users'
+// const endPoint = 'http://localhost:4000/api/v1/users'
 
 class UserModel {
   static getAllUsers = () => {
