@@ -1,4 +1,4 @@
-import React, {useState } from 'react';
+import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom'
 import {CardElement, useElements, useStripe} from '@stripe/react-stripe-js';
 import axios from 'axios'
@@ -138,76 +138,29 @@ const CheckoutForm = (props) => {
     const { data: clientSecret } = await axios.post(`${process.env.REACT_APP_API}/payment_intents`, {
       amount: Math.round(props.cartTotalPriceRaw * 100)
     })
-    console.log(clientSecret);
 
     const cardElement = elements.getElement(CardElement);
-    const paymentMethodReq = await stripe.createPaymentMethod({
+    const payload = await stripe.createPaymentMethod({
       type: 'card',
       card: cardElement,
       billing_details: billingDetails,
     })
-    console.log(paymentMethodReq);
 
     const confirmedCardPayment = await stripe.confirmCardPayment(clientSecret, {
-      payment_method: paymentMethodReq.paymentMethod.id
+      payment_method: payload.paymentMethod.id
     })
-
-    console.log(confirmedCardPayment);
-
-    const payload = await stripe.createPaymentMethod({
-      type: 'card',
-      card: elements.getElement(CardElement),
-      billing_details: billingDetails,
-    });
     
-    props.buyItemsInCart(props.arrProdNameSumm, props.userInfo._id)
-
+    props.buyItemsInCart()
+    
     setProcessing(false);
-
+    
     if (payload.error) {
       setError(payload.error);
     } else {
       setPaymentMethod(payload.paymentMethod);
     }
   };
-
-  const handlePaymentMethodResult = async (result) => {
-    if (result.error) {
-      // An error happened when collecting card details,
-      // show `result.error.message` in the payment form.
-    } else {
-      // Otherwise send paymentMethod.id to your server (see Step 3)
-      const response = await fetch('/pay', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          payment_method_id: result.paymentMethod.id,
-        }),
-      });
-
-      const serverResponse = await response.json();
-
-      handleServerResponse(serverResponse);
-    }
-  };
-
-  const handleServerResponse = (serverResponse) => {
-    if (serverResponse.error) {
-      // An error happened when charging the card,
-      // show the error in the payment form.
-      console.log(serverResponse.error);
-    } else {
-      // Show a success message
-      console.log(serverResponse);
-    }
-  };
-
-  const handleCardChange = (event) => {
-    if (event.error) {
-      // Show `event.error.message` in the payment form.
-    }
-  };
-
+  
   const reset = () => {
     setError(null);
     setProcessing(false);
@@ -226,10 +179,6 @@ const CheckoutForm = (props) => {
       <div className="ResultTitle" role="alert">
         Payment successful
       </div>
-      {/* <div className="ResultMessage">
-        Thanks for trying Stripe Elements. No money was charged, but we
-        generated a PaymentMethod: {paymentMethod.id}
-      </div> */}
       <div className="ResultMessage">
         <p>Thank you for shopping with us.</p>
         <p>Confirmation Number: {paymentMethod.id}</p>

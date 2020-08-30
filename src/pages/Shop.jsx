@@ -30,16 +30,19 @@ class Shop extends React.Component {
 
   toggleFav = (userid, product) => {
     const favAlready = this.state.userInfo.favorite.includes(product._id)
-    let direction = '';
+    const updateUserFav = this.state.userInfo
     if (!favAlready) {
       product.liked += 1
-      direction = 'add'
+      updateUserFav.favorite.push(product._id)
     } else if (product.liked > 1) {
       product.liked -= 1 
-      direction = 'remove'
+      const index = updateUserFav.favorite.indexOf(product._id)
+      updateUserFav.favorite.splice(index, 1)
+      console.log(updateUserFav.favorite, index);
     } else {
       return
     }
+
     ProductModel.editProduct(product._id, product)
       .then(res => {
         this.setState({
@@ -47,35 +50,44 @@ class Shop extends React.Component {
         })
       })
     
-    UserModel.toggleFav(userid, product, direction)
+    UserModel.editUser(userid, updateUserFav)
       .then(res => {
+        console.log("toggle Fav", res.data);
         const updateUserInfo = res.data  // res.data would already have the changes
         this.setState({userInfo: updateUserInfo})
         localStorage.setItem('foundUser', JSON.stringify(updateUserInfo))
       }) 
   }
 
-  addCartItem = (prodname, price, prodimg, userid) => {
+  addCartItem = (prod, userid) => {
+    // check if prod already in the cart
+    let newQty;
+    const foundItemInCart = this.state.userInfo.cart.find(item => item._id === prod._id)
+    if (foundItemInCart) {
+      newQty = foundItemInCart.totQty + 1
+    } else {
+      newQty = 1
+    }
     // adding item to CartItem model
-    let itemdata = {
-      prodName: prodname,
-      price: price,
-      prodImg: prodimg,
+    let cartItemData = {
       status: 'in cart',
+      totPrice: prod.price,
+      totQty: newQty,
+      product: prod._id,
       userid: userid,
     }
-    console.log(itemdata)
-    CartItemModel.add(itemdata)
+    console.log(cartItemData);
+    CartItemModel.add(cartItemData)
     .then(res => {
-      console.log(res.data);
+      console.log('After item added to the cart',res.data);
+      // get updated user info after adding cart item
+      UserModel.getUserById(userid)
+      .then(res => {
+        this.setState({userInfo: res.data})
+        localStorage.setItem('foundUser', JSON.stringify(res.data))
+      })
     })
     .catch (err => console.log('err adding cart item...', err))
-    // get updated user info after adding cart item
-    UserModel.getUserById(userid)
-    .then(res => {
-      this.setState({userInfo: res.data})
-      localStorage.setItem('foundUser', JSON.stringify(res.data))
-    })
   }
   
   render() {

@@ -14,39 +14,15 @@ const formatToCurrency = function formatToCurrency(variable, string, currencySty
 }
 
 function CartItemSummarized({ userInfo, cart, currentUser, reduceCartItem, increaseCartItem, buyItemsInCart}) {
-
-  // summarizing items in the cart; grouping same items together
-  const prodNameSumm = {};
-  cart.map(item => {
-    console.log("1) item from inside of the LOOP", item); // <<<<<<<<<<<<<<<<<<<<<<<<<<
-    let productName;
-    if (item.prodName in prodNameSumm) {
-      productName = prodNameSumm[item.prodName]
-      productName.totPrice += item.price
-      productName.totQty += 1
-    } else {
-      prodNameSumm[item.prodName] = {};
-      productName = prodNameSumm[item.prodName]
-      productName.name = item.prodName
-      productName.image = item.prodImg
-      productName.totPrice = item.price
-      productName.totQty = 1
-    }
-    // const formatUnitPrice = formatToCurrency(item.price, 'en-US', currencyStyle);
-      productName.unitPrice = item.price
-  })
-
-  let arrProdNameSumm = [];
-  for (const name in prodNameSumm) {
-      arrProdNameSumm.push(prodNameSumm[name])
-  }
+  console.log(cart);
   let cartTotalPriceRaw = 0, cartTotalQty = 0;
-  const cartItems = arrProdNameSumm.map(item => {
-    console.log("2) ProdNameSumm item: ", item); // <<<<<<<<<<<<<<<<<<<<<<<<<<
+
+  const cartItems = cart.map(item => {
     cartTotalPriceRaw += item.totPrice
     cartTotalQty += item.totQty
-    return <CartItem prod={item} key={item.name} reduceCartItem={reduceCartItem} increaseCartItem={increaseCartItem} userInfo={userInfo} />
+    return <CartItem cartItem={item} key={item._id} reduceCartItem={reduceCartItem} increaseCartItem={increaseCartItem} userInfo={userInfo} />
   })
+
   cartTotalPriceRaw = cartTotalPriceRaw.toFixed(2)
   const cartTotalPriceUSD = formatToCurrency(cartTotalPriceRaw, 'en-US', currencyStyle);
 
@@ -60,7 +36,7 @@ function CartItemSummarized({ userInfo, cart, currentUser, reduceCartItem, incre
           <div className="table-cell cart-price">Total Price: {cartTotalPriceUSD} </div>
         </div>
         <Elements stripe={stripePromise}>
-          <CheckoutForm cartTotalPriceRaw={cartTotalPriceRaw} buyItemsInCart={buyItemsInCart} arrProdNameSumm={arrProdNameSumm} userInfo={userInfo} />
+          <CheckoutForm cartTotalPriceRaw={cartTotalPriceRaw} buyItemsInCart={buyItemsInCart} cart={cart} userInfo={userInfo} />
         </Elements>
       </div>
     </div>

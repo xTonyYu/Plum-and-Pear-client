@@ -29,7 +29,7 @@ class IndexItem extends React.Component {
         <button onClick={() => this.props.toggleFav(this.props.userInfo._id, this.props.prod)} type="button" className={favStatus} id="fav"><img src="./icons/heart.png" alt="heart" className={this.props.fav} id="heart" /></button>
         <div>
 
-        <img onClick={() => this.props.addCartItem(this.props.prod.name, this.props.prod.price, this.props.prod.image, this.props.userInfo._id )} src="./icons/color-cart.png" className="cart" id="cart" />
+        <img onClick={() => this.props.addCartItem(this.props.prod, this.props.userInfo._id )} src="./icons/color-cart.png" className="cart" id="cart" />
         </div>
         
         </>

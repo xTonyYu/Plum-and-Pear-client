@@ -42,14 +42,6 @@ class Products extends React.Component {
     .catch(err => console.log('err getting all users...', err))
   }
 
-  getProdByType(prodType) {
-    ProductModel.getProductByType(prodType)
-    .then(prod => {
-      console.log(prod.data)
-      return prod.data;
-    })
-  }
-
   editProduct = (id, prod) => {
     const isUpdatedProd = p => {
       return p._id === id
@@ -84,11 +76,6 @@ class Products extends React.Component {
       this.props.history.push('/admin')
     })
     .catch(err => console.log('err deleting...', err))
-    // this.getProdByType(prodType)
-    // .then(prod => {
-    //   const relatedProducts = prod.data;
-      // this.props.history.push({pathname: '/admin/index', removeProduct: this.removeProduct, state: relatedProducts})
-    // })
   }
 
   render() { 

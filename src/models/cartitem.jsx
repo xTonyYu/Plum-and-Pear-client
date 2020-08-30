@@ -21,12 +21,8 @@ class CartItemModel {
     return axios.put(`${endPoint}/${id}`, data)
   }
 
-  static remove = (prodname, userid) => {
-    return axios.delete(`${endPoint}/${prodname}?userid=${userid}`)
-  }
-  
-  static buy = (prodArr, userid) => {
-    return axios.put(`${endPoint}/buy/${userid}`, prodArr)
+  static remove = (id) => {
+    return axios.delete(`${endPoint}/${id}`)
   }
 }
 

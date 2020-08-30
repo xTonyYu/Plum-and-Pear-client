@@ -13,18 +13,12 @@ class UserModel {
     return axios.get(`${endPoint}/${id}`)
   }
 
-  static getUserWithAttchment = (id) => {
-    return axios.get(`${endPoint}/${id}/withattachment`)
-  }
   // static addUser = (data) => {
   //   return axios.post(endPoint, data)
   // }
   
   static editUser = (id, data) => {
     return axios.put(`${endPoint}/${id}`, data)
-  }
-  static toggleFav = (id, prod, direction) => {
-    return axios.put(`${endPoint}/fav/${id}/${direction}`, prod)
   }
 
   // static revmoveUser = (id) => {

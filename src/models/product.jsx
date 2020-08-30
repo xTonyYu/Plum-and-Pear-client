@@ -9,10 +9,6 @@ class ProductModel {
     return axios.get(endPoint)
   }
 
-  static getProductByType = (prodType) => {
-    return axios.get(`${endPoint}/byprodtype/${prodType}`)
-  }
-
   static getProductById = (id) => {
     return axios.get(`${endPoint}/${id}`)
   }

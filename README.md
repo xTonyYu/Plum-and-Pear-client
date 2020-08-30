@@ -37,8 +37,12 @@ Extras:
 
 Wireframe:
 
-![wireframe](./asset/WIreframe-PlumAndPearStore.png)
+![wireframe](./asset/Wireframe-PlumAndPearStore.png)
 
 ERD:
 
 ![ERD](./asset/ERD.png)
+
+Planning:
+
+https://trello.com/b/NJS3TV9K/plum-pear
