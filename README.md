@@ -47,7 +47,7 @@ Plum & Pear Store is a use case of useing an e-commerce template that serves bot
 
 ## Wireframe:
 
-![wireframe](./asset/Wireframe-PlumAndPearStore.png)
+![wireframe](./asset/Wireframe.png)
 
 ## ERD:
 
