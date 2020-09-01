@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import {CardElement, useElements, useStripe} from '@stripe/react-stripe-js';
 import axios from 'axios'
 import './CheckoutForm.css';

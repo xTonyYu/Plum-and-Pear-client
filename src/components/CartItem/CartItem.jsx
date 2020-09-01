@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useRef} from 'react'
-import CartItemModel from '../../models/cartitem';
+import React from 'react'
 
 const currencyStyle = { style: 'currency', currency: 'USD' };
 const formatToCurrency = function formatToCurrency(variable, string, currencyStyle) {

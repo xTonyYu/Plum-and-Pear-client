@@ -1,13 +1,11 @@
 import React from 'react';
 import { ExternalLink } from 'react-external-link'
-import { NavLink, Link } from 'react-router-dom';
 import './Footer.css'
 
-const Footer = ({currentUser, admin, logout}) => {
+const Footer = () => {
   
   return(
     <footer>
-
         <section className="about-me">
             <p>
             Copyright &copy; {(new Date().getFullYear())} Tony Yu  
