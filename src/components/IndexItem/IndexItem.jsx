@@ -38,7 +38,7 @@ class IndexItem extends React.Component {
         <div className="table-cell row-price-cost">
             <div className="table-cell row-price">Price: { Intl.NumberFormat('en-US', currencyStyle).format(this.props.prod.price) } </div>
 
-            {this.props.admin && (
+            {this.props.admin == 'true' && (
             <div className="table-cell row-cost">Cost: { Intl.NumberFormat('en-US', currencyStyle).format(this.props.prod.cost) } </div>
             )}
 

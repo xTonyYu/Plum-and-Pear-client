@@ -17,8 +17,8 @@ class Login extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    // axios.post(`${process.env.REACT_APP_API}/auth/login`, this.state)
-    axios.post(`https://plumpear-api.herokuapp.com/api/v1/auth/login`, this.state)
+    axios.post(`${process.env.REACT_APP_API}/auth/login`, this.state)
+    // axios.post(`https://plumpear-api.herokuapp.com/api/v1/auth/login`, this.state)
     .then((res) => {
       let admin = res.config.data.includes(`AdminX`) ? 'true' : 'false'
       this.props.setCurrentUser(res.data.token, admin, res.data.foundUser)
