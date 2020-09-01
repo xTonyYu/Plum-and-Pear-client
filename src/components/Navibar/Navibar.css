@@ -18,7 +18,7 @@ nav .container {
 
 .logo-cart {
   display: flex;
-  align-items: baseline;
+  align-items: center;
 }
 
 .logo {
@@ -42,7 +42,15 @@ nav .container {
   width: 25px;
   height: 25px;
   margin-left: 10px;
+  padding-top: 5px;
+}
 
+.first-name {
+  margin-left: 15px;
+  align-self: center;
+}
+.first-name p {
+  margin: 0;
 }
 
 .nav-list {
@@ -81,4 +89,10 @@ nav .container {
   color: var(--green);
   border-bottom: var(--green) solid 3px;
   z-index: 10;
+}
+
+@media only screen and (max-width: 502px) {
+  .logo-cart {
+    min-width: 230px;
+  }
 }

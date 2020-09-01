@@ -3,7 +3,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './Navibar.css';
 
-const Navibar = ({currentUser, admin, logout}) => {
+const Navibar = ({currentUser, userInfo, admin, logout}) => {
   
   return(
     <nav>
@@ -14,13 +14,20 @@ const Navibar = ({currentUser, admin, logout}) => {
           </NavLink>
 
           {currentUser && (
+          <>
           <NavLink className="cart" exact to='/cart' >
             <div className="item-count"><img src="/icons/cart.png" alt="logcarto" id="cart" /></div>
           </NavLink>
+          <div className="first-name">
+            <p>Hi {userInfo.firstName}</p>
+          </div>
+          </>
           )}
+
         </div>
         
         <ul className="nav-list">
+          
           <li className="nav-item">
             <NavLink className="nav-link" exact to='/shop'>Shop</NavLink>
           </li>

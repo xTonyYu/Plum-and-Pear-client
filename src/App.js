@@ -64,7 +64,7 @@ class App extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Navibar currentUser={this.state.currentUser} admin={this.state.admin} logout={this.logout} />
+        <Navibar currentUser={this.state.currentUser} admin={this.state.admin} logout={this.logout} userInfo={this.state.userInfo} />
         <main>
           <Routes currentUser={this.state.currentUser} userInfo={this.state.userInfo} setCurrentUser={this.setCurrentUser} admin={this.state.admin} />
         </main>
