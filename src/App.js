@@ -4,6 +4,7 @@ import setAuthHeader from './util/setAuthHeader'
 // import logo from './logo.svg';
 import Routes from './config/routes';
 import Navibar from './components/Navibar/Navibar';
+import Footer from './components/Footer/Footer';
 import { withRouter } from 'react-router-dom'
 import './App.css';
 
@@ -67,6 +68,7 @@ class App extends React.Component {
         <main>
           <Routes currentUser={this.state.currentUser} userInfo={this.state.userInfo} setCurrentUser={this.setCurrentUser} admin={this.state.admin} />
         </main>
+        <Footer />
       </React.Fragment>    
     );
   }

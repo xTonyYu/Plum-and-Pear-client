@@ -85,13 +85,11 @@ class Cart extends React.Component {
       // change status of corresponding items in the CartModel
         item.status = 'bought'
         CartItemModel.edit(item._id, item)
-        .then(res => console.log(res.data))
         .catch(err => console.log('err updating cart to bought...', err))
       // reduce qty in Product Model based on cart items and qty
         let prod = item.product
         prod.quantity -= item.totQty
         ProductModel.editProduct(item.product._id, prod)
-        .then(res => console.log(res.data))
         .catch(err => console.log('err updating product qty...', err))
     })
     

@@ -14,7 +14,6 @@ const formatToCurrency = function formatToCurrency(variable, string, currencySty
 }
 
 function CartItemSummarized({ userInfo, cart, currentUser, reduceCartItem, increaseCartItem, buyItemsInCart}) {
-  console.log(cart);
   let cartTotalPriceRaw = 0, cartTotalQty = 0;
 
   const cartItems = cart.map(item => {

@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
 :root {
   --plum: rgb(206,149,218);
-  --dark-plum: #421b49;
+  --dark-plum: #491d50;
   --yellow-pear: rgb(197,170,89);
   --pear: rgb(201, 207, 107);
   --green: rgb(71, 101, 69);
@@ -29,7 +29,8 @@ main {
   min-height: calc(100vh - 60px);
 }
 .container {
-  width: 60vw;
+  width: calc(60vw - 50px);
+  /* margin-bottom: 50px; */
 }
 
 h1, h2, h3, h4 {
@@ -39,46 +40,6 @@ h2 {
   font-size: 26px;
 }
 
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-
 /* Home  */
 form,
 .products,
@@ -87,7 +48,7 @@ form,
 .home-container {
   width: 100%;
   min-height: calc(100vh - 100px);
-  padding-bottom: 30px;
+  padding-bottom: 50px;
 }
 
 svg {

@@ -1,0 +1,51 @@
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: fixed;
+  bottom: 0;
+  background-color: var(--plum);
+  width: 100vw;
+}
+
+footer p {
+  display: inline;
+  margin: 0;
+  color: var(--dark-plum);
+  word-wrap: none;
+}
+
+footer a {
+  height: 28px;
+}
+
+footer a i {
+  color: var(--dark-plum);
+  vertical-align: middle;
+  margin: 5px;
+}
+
+.about-me,
+.about-site {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: right;
+  align-items: center;
+  margin-left: 5px;
+}
+
+.about-site {
+  margin-left: 20px;
+}
+
+@media only screen and (max-width: 576px) {
+  footer a i {
+    margin: 2px 5px;
+  }
+  .about-me {
+    width: 200px;
+  }
+  .about-site {
+    width: 140px;
+  }
+}

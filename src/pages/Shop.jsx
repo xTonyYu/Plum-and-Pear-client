@@ -52,7 +52,6 @@ class Shop extends React.Component {
     
     UserModel.editUser(userid, updateUserFav)
       .then(res => {
-        console.log("toggle Fav", res.data);
         const updateUserInfo = res.data  // res.data would already have the changes
         this.setState({userInfo: updateUserInfo})
         localStorage.setItem('foundUser', JSON.stringify(updateUserInfo))
@@ -76,10 +75,8 @@ class Shop extends React.Component {
       product: prod._id,
       userid: userid,
     }
-    console.log(cartItemData);
     CartItemModel.add(cartItemData)
     .then(res => {
-      console.log('After item added to the cart',res.data);
       // get updated user info after adding cart item
       UserModel.getUserById(userid)
       .then(res => {
