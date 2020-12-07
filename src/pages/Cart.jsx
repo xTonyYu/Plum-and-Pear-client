@@ -1,9 +1,11 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import UserModel from '../models/user'
 import CartItemSummarized from '../components/CartItemSummarized/CartItemSummarized'
 import '../App.css'
 import CartItemModel from '../models/cartitem'
 import ProductModel from '../models/product'
+import { addItemToCart, removeItemFromCart } from '../actions/cartActions'
 
 class Cart extends React.Component {
   state = {
@@ -31,12 +33,14 @@ class Cart extends React.Component {
   increaseCartItem = (cartItem) => {
     let totPriceChg = cartItem.product.price
     let totQtyChg = 1
+    this.props.addItemToCart(cartItem)
     this.updateCartItemQty(cartItem, totPriceChg, totQtyChg)
   }
   
   reduceCartItem = (cartItem) => {
     let totPriceChg = -(cartItem.product.price)
     let totQtyChg = -1
+    this.props.removeItemFromCart(cartItem)
     if (cartItem.totQty + totQtyChg === 0) {
       // remove item from cart
       CartItemModel.remove(cartItem._id)
@@ -122,4 +126,12 @@ class Cart extends React.Component {
   }
 }
 
-export default Cart;
+// export default Cart;
+function mapStateToProps(state) {
+  return {
+    numItems: state.cart.numItems,
+    items: state.cart.items,
+    stateCart: state.cart,
+  }
+}
+export default connect(mapStateToProps, { addItemToCart, removeItemFromCart } )(Cart);
