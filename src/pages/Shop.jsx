@@ -1,8 +1,10 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import ProductModel from '../models/product'
 import UserModel from '../models/user'
 import CartItemModel from '../models/cartitem'
 import IndexItem from '../components/IndexItem/IndexItem'
+import { addItemToCart } from '../actions/cartActions'
 import '../App.css'
 
 class Shop extends React.Component {
@@ -59,13 +61,23 @@ class Shop extends React.Component {
   }
 
   addCartItem = (prod, userid) => {
+    // calling redux addItemToCart action
+    console.log("from Redux state.cart...", this.props.stateCart);
+    this.props.addItemToCart(prod)
+    console.log("after adding item, from Redux state.cart...", this.props.stateCart);
+
     // check if prod already in the cart
     let newQty;
-    const foundItemInCart = this.state.userInfo.cart.find(item => item._id === prod._id)
+    console.log(prod);
+    console.log(this.state.userInfo);
+    // **********TODO see below *************************** 
+    const foundItemInCart = this.state.userInfo.cart.find(item => item.product._id === prod._id)
     if (foundItemInCart) {
       newQty = foundItemInCart.totQty + 1
+      // TODO Need to edit CartItemModel not add
     } else {
       newQty = 1
+      // TODO need to move adding item block of code in the else block
     }
     // adding item to CartItem model
     let cartItemData = {
@@ -101,6 +113,7 @@ class Shop extends React.Component {
           <div className="title">
               <div className=" ind-name border">
                   <h2>Unique and Artistic</h2>
+                  <h4>TEST: {this.props.numItems}</h4>
               </div>
           </div>
           {displayProducts}
@@ -110,4 +123,11 @@ class Shop extends React.Component {
   }
 }
 
-export default Shop;
+function mapStateToProps(state) {
+  return {
+    numItems: state.cart.numItems,
+    items: state.cart.items,
+    stateCart: state.cart,
+  }
+}
+export default connect(mapStateToProps, { addItemToCart } )(Shop);

@@ -77,6 +77,16 @@
   border-radius: 5px;
 }
 
+.add {
+  width: 25px;
+  height: 25px;
+  transition: all 0.5s;
+}
+.add:active {
+  box-shadow: 3px 3px 3px;
+  background-color: plum;
+}
+
 @media only screen and (max-width: 650px) {
   .row-price-cost {
     min-width: 250px;
