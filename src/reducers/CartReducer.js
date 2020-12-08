@@ -10,16 +10,14 @@ function cart(state=defaultState, action) {
     case 'ADD_ITEM':
       newState.numItems += action.item.numItems
       newState.items = [...state.items , action.item.item]
-      console.log(newState)
       return newState
     case 'REMOVE_ITEM':
-      // TODO: need to test below
-      console.log("in CartReducer - REMOVE_ITEM action")
-      console.log(state)
       newState.numItems += action.item.numItems
       newState.items = [...state.items , action.item.item]
-
-      console.log(newState)
+      return newState
+    case 'UPDATE_NUMITEMS':
+      newState.numItems = action.item.numItems
+      // newState.items = [...state.items , action.item.item]
       return newState
     default:
       return state

@@ -82,8 +82,11 @@
   height: 25px;
   transition: all 0.5s;
 }
+.add:hover {
+  cursor: pointer;;
+}
 .add:active {
-  box-shadow: 3px 3px 3px;
+  box-shadow: 3px 3px 3px 3px;
   background-color: plum;
 }
 

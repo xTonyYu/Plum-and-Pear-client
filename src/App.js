@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux'
 import jwt_decode from 'jwt-decode';
 import setAuthHeader from './util/setAuthHeader'
 // import logo from './logo.svg';
@@ -6,6 +7,8 @@ import Routes from './config/routes';
 import Navibar from './components/Navibar/Navibar';
 import Footer from './components/Footer/Footer';
 import { withRouter } from 'react-router-dom'
+import { updateNumItemsInCart } from './actions/cartActions'
+
 import './App.css';
 
 
@@ -25,6 +28,8 @@ class App extends React.Component {
     let admin = localStorage.getItem('admin')
     let foundUserJson = localStorage.getItem('foundUser')
     let foundUser = JSON.parse(foundUserJson)
+    if (foundUser) console.log('>>>>>',foundUser.cart.length || 0)
+    if (foundUser) this.props.updateNumItemsInCart(foundUser.cart.length || 0)
     if (token) {
       setAuthHeader(token)
       const decoded = jwt_decode(token)
@@ -74,4 +79,11 @@ class App extends React.Component {
   }
 }
 
-export default withRouter(App);
+function mapStateToProps(state) {
+  return {
+    numItems: state.cart.numItems,
+    items: state.cart.items,
+    stateCart: state.cart,
+  }
+}
+export default withRouter(connect(mapStateToProps, { updateNumItemsInCart }) (App));

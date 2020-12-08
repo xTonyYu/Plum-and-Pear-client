@@ -68,35 +68,49 @@ class Shop extends React.Component {
 
     // check if prod already in the cart
     let newQty;
-    console.log(prod);
-    console.log(this.state.userInfo);
-    // **********TODO see below *************************** 
     const foundItemInCart = this.state.userInfo.cart.find(item => item.product._id === prod._id)
+    let cartItemData
+
     if (foundItemInCart) {
-      newQty = foundItemInCart.totQty + 1
-      // TODO Need to edit CartItemModel not add
-    } else {
-      newQty = 1
-      // TODO need to move adding item block of code in the else block
-    }
-    // adding item to CartItem model
-    let cartItemData = {
-      status: 'in cart',
-      totPrice: prod.price,
-      totQty: newQty,
-      product: prod._id,
-      userid: userid,
-    }
-    CartItemModel.add(cartItemData)
-    .then(res => {
-      // get updated user info after adding cart item
-      UserModel.getUserById(userid)
-      .then(res => {
-        this.setState({userInfo: res.data})
-        localStorage.setItem('foundUser', JSON.stringify(res.data))
+      newQty = 
+      cartItemData = {
+        status: 'in cart',
+        totPrice: foundItemInCart.totPrice + prod.price,
+        totQty: foundItemInCart.totQty + 1,
+        product: foundItemInCart.product._id,
+        userid: userid,
+      }
+      CartItemModel.edit(foundItemInCart._id, cartItemData)
+      .then(item => {
+        // get updated user info after adding cart item
+        UserModel.getUserById(userid)
+        .then(res => {
+          const updateUserInfo = res.data  // res.data would already have the changes
+          this.setState({userInfo: updateUserInfo, cartitems: updateUserInfo.cart})
+          localStorage.setItem('foundUser', JSON.stringify(updateUserInfo))
+        })
       })
-    })
-    .catch (err => console.log('err adding cart item...', err))
+      .catch (err => console.log('err adding cart item...', err))
+    } else {
+      cartItemData = {
+        status: 'in cart',
+        totPrice: prod.price,
+        totQty: 1,
+        product: prod._id,
+        userid: userid,
+      }
+      // add item to CartItem model if the product is not in the cart yet
+      CartItemModel.add(cartItemData)
+      .then(res => {
+        // get updated user info after adding cart item
+        UserModel.getUserById(userid)
+        .then(res => {
+          this.setState({userInfo: res.data})
+          localStorage.setItem('foundUser', JSON.stringify(res.data))
+        })
+      })
+      .catch (err => console.log('err adding cart item...', err))
+    }
   }
   
   render() {
@@ -113,7 +127,7 @@ class Shop extends React.Component {
           <div className="title">
               <div className=" ind-name border">
                   <h2>Unique and Artistic</h2>
-                  <h4>TEST: {this.props.numItems}</h4>
+                  {/* <h4>TEST: {this.props.numItems}</h4> */}
               </div>
           </div>
           {displayProducts}
