@@ -125,11 +125,12 @@ class Shop extends React.Component {
         <section className="products">
           <div className="title">
               <div className=" ind-name border">
-                  <h2>Unique and Artistic</h2>
-                  {/* <h4>TEST: {this.props.numItems}</h4> */}
+                  <h2>Shop Unique and Artistic Items</h2>
               </div>
           </div>
-          {displayProducts}
+          <div className="prod-wrapper">
+            {displayProducts}
+          </div>
         </section>
         </>
     )

@@ -5,8 +5,12 @@
   width: 20%
 }
 
-.table-row {
-  width: 70vw;
+.border {
+  border: red 1px solid;
+}
+.prod-card {
+  /* width: 70vw; */
+  width: 320px;
   background-color: rgb(250, 245, 245);  
   display: flex;
   flex-wrap: wrap;
@@ -18,10 +22,11 @@
   padding: 10px;
   margin: 6px;
 }
-.table-cell {
+.card-cell {
   /* display: inline-block; */
   /* height: 100%; */
   padding: 3px;
+  border: solid 1px blue;
   /* align-content: center; */
   /* vertical-align: middle; */
 }

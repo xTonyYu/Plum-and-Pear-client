@@ -36,7 +36,7 @@ export default ({currentUser, userInfo, setCurrentUser, admin}) => {
         admin === 'true' ? <Index /> : <Redirect to='/login' />
       } /> */}
       <Route exact path='/admin' render={() => 
-        admin === 'true' ? <Dashboard admin={admin} /> : <Redirect to='/login' />
+        admin === 'true' ? <Dashboard admin={admin} currentUser={currentUser} /> : <Redirect to='/login' />
       } />
 
       {/* 404 Route */}

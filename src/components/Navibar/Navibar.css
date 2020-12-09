@@ -75,6 +75,7 @@ nav .container {
   display: flex;
   margin: 0;
   overflow: scroll;
+  padding: 0 10px
 }
 
 .nav-item {
@@ -94,7 +95,7 @@ nav .container {
   font-weight: 400;
 }
 .nav-list > *:last-child {
-  padding-right: 5px;
+  padding-right: 15px;
 }
 
 .nav-link:hover {

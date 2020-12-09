@@ -33,7 +33,9 @@ class Index extends React.Component {
                 <h2>{products[0].prodType} Inventory</h2>
             </div>
         </div>
-        {displayProducts}
+        <div className="prod-wrapper">
+          {displayProducts}
+        </div>
       </section>
       </>
     )
