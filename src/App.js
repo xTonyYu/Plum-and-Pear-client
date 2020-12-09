@@ -28,8 +28,10 @@ class App extends React.Component {
     let admin = localStorage.getItem('admin')
     let foundUserJson = localStorage.getItem('foundUser')
     let foundUser = JSON.parse(foundUserJson)
-    if (foundUser) console.log('>>>>>',foundUser.cart.length || 0)
-    if (foundUser) this.props.updateNumItemsInCart(foundUser.cart.length || 0)
+    if (foundUser) {
+      const numItemsInCartNow = foundUser.cart.reduce((acc, cur) => acc += cur.totQty, 0)
+      this.props.updateNumItemsInCart(numItemsInCartNow || 0)
+    }
     if (token) {
       setAuthHeader(token)
       const decoded = jwt_decode(token)
@@ -41,7 +43,6 @@ class App extends React.Component {
     } else {
       this.setState({admin: false})
     }
-    // console.log("admin in Comp Did Mount...", admin)
   }
 
   setCurrentUser= (token, admin, foundUser) => {
@@ -79,11 +80,9 @@ class App extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
+const mapStateToProps = (state) => ({
     numItems: state.cart.numItems,
     items: state.cart.items,
     stateCart: state.cart,
-  }
-}
+  })
 export default withRouter(connect(mapStateToProps, { updateNumItemsInCart }) (App));

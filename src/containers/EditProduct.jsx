@@ -1,6 +1,7 @@
 import React from 'react'
+import ProductModel from '../models/product'
 
-class AddProduct extends React.Component {
+class EditProduct extends React.Component {
   state = {
     // product: this.props.location.state,
     name: this.props.location.state.name,
@@ -12,10 +13,6 @@ class AddProduct extends React.Component {
     image: this.props.location.state.image,
   }
 
-  componentDidMount() {
-    
-  }
-
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
@@ -24,13 +21,14 @@ class AddProduct extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    this.props.location.editProduct(this.props.location.state._id, this.state)
-    // ProductModel.editProduct(this.props.location.state._id, this.state)
-    // .then(res => {
-    //   console.log(res)
-    // })
-    // .catch(err => console.log("err editing product in EditProduct.jsx...", err))
-    // this.props.history.push('/admin')
+    // console.log(this.props)
+    // this.props.location.editProduct(this.props.location.state._id, this.state)
+    ProductModel.editProduct(this.props.location.state._id, this.state)
+    .then(res => {
+      console.log(res)
+      this.props.history.push('/admin')
+    })
+    .catch(err => console.log("err editing product in EditProduct.jsx...", err))
   }
 
   render() {
@@ -79,4 +77,4 @@ class AddProduct extends React.Component {
   }
 }
 
-export default AddProduct;
+export default EditProduct;

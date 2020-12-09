@@ -13,7 +13,6 @@ const addItemToCart = function addItemToCart(item) {
   }
 }
 const removeItemFromCart = function removeItemFromCart(item) {
-  console.log("Redux in cartActions - removeItemFromCart...")
   return {
     type: REMOVE_ITEM,
     item: {
@@ -23,7 +22,6 @@ const removeItemFromCart = function removeItemFromCart(item) {
   }
 }
 const updateNumItemsInCart = function updateNumItemsInCart(numItems) {
-  console.log("Redux in cartActions - updateNumItemsInCart...")
   return {
     type: UPDATE_NUMITEMS,
     item: {

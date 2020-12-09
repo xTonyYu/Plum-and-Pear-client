@@ -22,9 +22,11 @@ class AddProduct extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault()
     ProductModel.addProduct(this.state)
-    .then(res => console.log(res))
+    .then(res => {
+      console.log(res)
+      this.props.history.push('/admin')
+    })
     .catch(err => console.log("err adding product...", err))
-    this.props.history.push('/admin')
   }
 
   render() {

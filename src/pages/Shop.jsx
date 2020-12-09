@@ -36,11 +36,10 @@ class Shop extends React.Component {
     if (!favAlready) {
       product.liked += 1
       updateUserFav.favorite.push(product._id)
-    } else if (product.liked > 1) {
+    } else if (product.liked > 0) {
       product.liked -= 1 
       const index = updateUserFav.favorite.indexOf(product._id)
       updateUserFav.favorite.splice(index, 1)
-      console.log(updateUserFav.favorite, index);
     } else {
       return
     }
@@ -112,12 +111,12 @@ class Shop extends React.Component {
       .catch (err => console.log('err adding cart item...', err))
     }
   }
-  
+
   render() {
     const userInfoExist = this.state.userInfo ? this.state.userInfo.favorite || [] : []
     const displayProducts = this.state.products.map(prod => {
         const fav = userInfoExist.includes(prod._id) ? 'heart' : ''
-        return <IndexItem prod={prod} userInfo={this.state.userInfo} toggleFav={this.toggleFav} fav={fav} key={prod._id} currentUser={this.props.currentUser} addCartItem={this.addCartItem} admin={this.props.admin} />
+        return <IndexItem prod={prod} key={prod._id} userInfo={this.state.userInfo} toggleFav={this.toggleFav} fav={fav} currentUser={this.props.currentUser} addCartItem={this.addCartItem} admin={this.props.admin} />
     })
     // console.log("UserInfo: ", this.state.userInfo);
     // console.log("Products", this.state.products);
@@ -137,11 +136,9 @@ class Shop extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
+const mapStateToProps = (state) => ({
     numItems: state.cart.numItems,
     items: state.cart.items,
     stateCart: state.cart,
-  }
-}
+  })
 export default connect(mapStateToProps, { addItemToCart } )(Shop);

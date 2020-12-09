@@ -12,7 +12,7 @@ function Summary(props) {
           <p>Average Price: {props.prod.avgPrice}</p>
           <p>Average Cost: {props.prod.avgCost}</p>
           <div className="btn-group dash-btn-grp " role="group" aria-label="Basic example">
-              <Link to={{pathname: '/admin/index', removeProduct: props.removeProduct, editProduct: props.editProduct, state: props.relatedProducts, admin: props.admin }} >
+              <Link to={{pathname: '/admin/index', allProducts: props.allProducts, removeProduct: props.removeProduct, state: props.relatedProducts, admin: props.admin }} >
                   <button type="button" className="btn btn-secondary" >Detail</button>
               </Link>
               {/* <a >

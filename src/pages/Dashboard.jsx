@@ -16,14 +16,14 @@ class Products extends React.Component {
   }
 
   // async getProducts() {
-    // try {
+  //   try {
   //     let prod = await ProductModel.getAllProducts()
   //     console.log('Products data...', prod.data);
   //     let data = await prod.data
   //     this.setState({porducts: data})
-    // } catch (err) {
-    //   console.log('err getting all products...', err);
-    // }
+  //   } catch (err) {
+  //     console.log('err getting all products...', err);
+  //   }
   // }
 
   getProducts() {
@@ -42,27 +42,6 @@ class Products extends React.Component {
     .catch(err => console.log('err getting all users...', err))
   }
 
-  editProduct = (id, prod) => {
-    const isUpdatedProd = p => {
-      return p._id === id
-    }
-    ProductModel.editProduct(id, prod)
-    .then(res => {
-      console.log(this.state.products)
-      let products = this.state.products.find(isUpdatedProd)
-      products.name = prod.name
-      products.prodType = prod.prodType
-      products.price = prod.price
-      products.cost = prod.cost
-      products.quantity = prod.quantity
-      products.descrption = prod.descrption
-      products.image = prod.image
-      this.setState({...this.state.products, products})
-      this.props.history.push('/admin')
-    })
-    .catch(err => console.log("err editing product...", err))
-  }
-
   removeProduct = (id, prodType) => {
     // alert('In Dashboard, id =', id)
     ProductModel.removeProduct(id)
@@ -79,7 +58,6 @@ class Products extends React.Component {
   }
 
   render() { 
-
     return (
       <div className="dash-container container">
         <h1>Manager's Dashboard</h1>
@@ -87,7 +65,6 @@ class Products extends React.Component {
           products={this.state.products} 
           users={this.state.users} 
           removeProduct={this.removeProduct}
-          editProduct={this.editProduct}
           admin={this.props.admin}
         />
       </div>

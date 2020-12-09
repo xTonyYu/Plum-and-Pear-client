@@ -1,4 +1,3 @@
-// TODO default state below need to reflect what is currently in cart DB; need to linked it when customer logged in and get want is in the user's cart data
 const defaultState = {
   numItems: 0,
   items: []
