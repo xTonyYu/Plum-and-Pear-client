@@ -30,9 +30,9 @@ function CartItemSummarized({ userInfo, cart, currentUser, reduceCartItem, incre
       {cartItems}
       <div className="grand-total">
         <div className="table-cell total-wrapper">
-          <div className="table-cell cart-total" >Grand Total</div>
-          <div className="table-cell cart-quantity">Qty: { Intl.NumberFormat('en-US').format(cartTotalQty) }</div>
-          <div className="table-cell cart-price">Total Price: {cartTotalPriceUSD} </div>
+          <div className="cart-total" >Grand Total</div>
+          <div className="cart-quantity">Qty: { Intl.NumberFormat('en-US').format(cartTotalQty) }</div>
+          <div className="cart-price">{cartTotalPriceUSD} </div>
         </div>
         <Elements stripe={stripePromise}>
           <CheckoutForm cartTotalPriceRaw={cartTotalPriceRaw} buyItemsInCart={buyItemsInCart} cart={cart} userInfo={userInfo} />

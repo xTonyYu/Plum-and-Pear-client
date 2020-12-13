@@ -20,6 +20,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    console.log("component did mount")
     if (localStorage.getItem('token') === 'undefined') {
       this.setState({currentUser: '', admin: false})
       return
@@ -28,6 +29,7 @@ class App extends React.Component {
     let admin = localStorage.getItem('admin')
     let foundUserJson = localStorage.getItem('foundUser')
     let foundUser = JSON.parse(foundUserJson)
+    // TODO numItemsInCartNow still shows prior user's count when login to a different user; the page was not rerender so no mounting happend
     if (foundUser) {
       const numItemsInCartNow = foundUser.cart.reduce((acc, cur) => acc += cur.totQty, 0)
       this.props.updateNumItemsInCart(numItemsInCartNow || 0)
@@ -56,6 +58,17 @@ class App extends React.Component {
       admin: admin,
       userInfo: foundUser,
     })
+  }
+// TODO use below function to update state to latest user info; call it in setCurrentUser and componentDidMount
+  updateStateWithLatestUserInfo= () => {
+    let foundUserJson = localStorage.getItem('foundUser')
+    let foundUser = JSON.parse(foundUserJson)
+    // TODO numItemsInCartNow still shows prior user's count when login to a different user; the page was not rerender so no mounting happend
+    if (foundUser) {
+      const numItemsInCartNow = foundUser.cart.reduce((acc, cur) => acc += cur.totQty, 0)
+      this.props.updateNumItemsInCart(numItemsInCartNow || 0)
+    }
+    return foundUser
   }
   
   logout = () => {

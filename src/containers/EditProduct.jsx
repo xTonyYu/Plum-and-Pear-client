@@ -9,7 +9,7 @@ class EditProduct extends React.Component {
     price: this.props.location.state.price,
     cost: this.props.location.state.cost,
     quantity: this.props.location.state.quantity,
-    descrption: this.props.location.state.descrption,
+    description: this.props.location.state.description,
     image: this.props.location.state.image,
   }
 
@@ -65,8 +65,8 @@ class EditProduct extends React.Component {
             <input onInput={this.handleChange} type="text" name="image" defaultValue={product.image}/>
           </div>
           <div>
-            <label >Descrption</label>
-            <textarea onInput={this.handleChange} type="text" rows="5" name="descrption" defaultValue={product.descrption} />
+            <label >description</label>
+            <textarea onInput={this.handleChange} type="text" rows="5" name="description" defaultValue={product.description} />
           </div>
           
           <button type="submit">Submit Update</button>

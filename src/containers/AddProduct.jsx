@@ -9,8 +9,8 @@ class AddProduct extends React.Component {
     price: 0,
     cost: 0,
     quantity: 0,
-    descrption: '',
-    image: '',
+    description: '',
+    image: '/images/no-image-available.jpg',
   }
 
   handleChange = (e) => {
@@ -21,6 +21,8 @@ class AddProduct extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
+    // if (this.state.image !== '/images/no-image-available.jpg') 
+    // this.setState({image: '/images/no-image-available.jpg'})
     ProductModel.addProduct(this.state)
     .then(res => {
       console.log(res)
@@ -61,8 +63,8 @@ class AddProduct extends React.Component {
             <input onInput={this.handleChange} type="text" name="image" placeholder="Image URL" />
           </div>
           <div>
-            <label >Descrption</label>
-            <textarea onInput={this.handleChange} type="text" rows="5" name="descrption" placeholder="Descrption" />
+            <label >Description</label>
+            <textarea onInput={this.handleChange} type="text" rows="5" name="description" placeholder="description" />
           </div>
           
           <button type="submit">Add Product</button>
