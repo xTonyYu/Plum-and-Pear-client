@@ -5,70 +5,54 @@
   width: 20%
 }
 
-.table-row {
-  width: 70vw;
+.prod-card {
+  width: 300px;
   background-color: rgb(250, 245, 245);  
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
+  flex-direction: column;
+  align-items: center; 
   border: solid 3px var(--dark-plum);
   border-radius: 5px;
   box-shadow: 4px 4px 3px;
   padding: 10px;
   margin: 6px;
 }
-.table-cell {
-  /* display: inline-block; */
-  /* height: 100%; */
-  padding: 3px;
-  /* align-content: center; */
-  /* vertical-align: middle; */
-}
-.row-name {
-  width: 20%;
+
+.card-row {
+  width: 90%;
   min-width: 200px;
+  padding: 3px;
 }
-.row-likes {
+
+.row-name {
+  font-weight: 500;
+}
+
+.row-like-wrapper,
+.row-price-add,
+.row-cost-qty {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.likes {
+  display: inline;
   margin: 0;
-  width: 7%;
   min-width: 80px;
 }
-.row-quantity {
-  width: 5%;
-  min-width: 50px;
-}
-
-.row-price-cost {
-  width: 10%;
-  min-width: 120px;
-}
-.row-price,
-.row-cost {
-  display: inline-block;
-  /* width: 5%; */
-  min-width: 100px;
-  margin-left: 10px;
-}
-
-.row-action {
-  display: flex;
-}
-.btn {
-  margin: 0 10px;
-}
-
 #fav {
-  padding: 3px;
+  padding: 1px 3px 3px 2px;
+  margin: 0 17px 0 0;
   background-color: lightgrey;
   width: 25px;
   height: 25px;
   border-radius: 15px;
+  float: none;
 }
 .heart,
 #fav.heart  {
-  /* background-image: url('/icons/red-heart.png'); */
-  background-color: rgb(255, 139, 118);
+  background-color: rgb(255, 255, 255);
 }
 #heart {
   width: 90%;
@@ -77,8 +61,40 @@
   border-radius: 5px;
 }
 
+.price {
+  font-size: 23px;
+  font-weight: 600;
+  padding: 0 3px;
+}
+.add {
+  width: 25px;
+  height: 25px;
+  transition: all 0.5s;
+  margin-right: 20px;
+}
+.add:hover {
+  cursor: pointer;;
+}
+.add:active {
+  box-shadow: 3px 3px 3px 3px;
+  background-color: plum;
+}
+
+.quantity {
+  min-width: 90px;
+}
+
+.row-action {
+  display: flex;
+  justify-content: space-around;
+}
+.btn {
+  margin: 0 10px;
+}
+
+
 @media only screen and (max-width: 650px) {
-  .row-price-cost {
+  .row-price-add {
     min-width: 250px;
   }
 }

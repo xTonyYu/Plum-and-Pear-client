@@ -1,6 +1,7 @@
 import React from 'react'
+import ProductModel from '../models/product'
 
-class AddProduct extends React.Component {
+class EditProduct extends React.Component {
   state = {
     // product: this.props.location.state,
     name: this.props.location.state.name,
@@ -8,12 +9,8 @@ class AddProduct extends React.Component {
     price: this.props.location.state.price,
     cost: this.props.location.state.cost,
     quantity: this.props.location.state.quantity,
-    descrption: this.props.location.state.descrption,
+    description: this.props.location.state.description,
     image: this.props.location.state.image,
-  }
-
-  componentDidMount() {
-    
   }
 
   handleChange = (e) => {
@@ -24,13 +21,14 @@ class AddProduct extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    this.props.location.editProduct(this.props.location.state._id, this.state)
-    // ProductModel.editProduct(this.props.location.state._id, this.state)
-    // .then(res => {
-    //   console.log(res)
-    // })
-    // .catch(err => console.log("err editing product in EditProduct.jsx...", err))
-    // this.props.history.push('/admin')
+    // console.log(this.props)
+    // this.props.location.editProduct(this.props.location.state._id, this.state)
+    ProductModel.editProduct(this.props.location.state._id, this.state)
+    .then(res => {
+      console.log(res)
+      this.props.history.push('/admin')
+    })
+    .catch(err => console.log("err editing product in EditProduct.jsx...", err))
   }
 
   render() {
@@ -67,8 +65,8 @@ class AddProduct extends React.Component {
             <input onInput={this.handleChange} type="text" name="image" defaultValue={product.image}/>
           </div>
           <div>
-            <label >Descrption</label>
-            <textarea onInput={this.handleChange} type="text" rows="5" name="descrption" defaultValue={product.descrption} />
+            <label >description</label>
+            <textarea onInput={this.handleChange} type="text" rows="5" name="description" defaultValue={product.description} />
           </div>
           
           <button type="submit">Submit Update</button>
@@ -79,4 +77,4 @@ class AddProduct extends React.Component {
   }
 }
 
-export default AddProduct;
+export default EditProduct;

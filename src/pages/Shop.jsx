@@ -1,8 +1,10 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import ProductModel from '../models/product'
 import UserModel from '../models/user'
 import CartItemModel from '../models/cartitem'
 import IndexItem from '../components/IndexItem/IndexItem'
+import { addItemToCart } from '../actions/cartActions'
 import '../App.css'
 
 class Shop extends React.Component {
@@ -34,11 +36,10 @@ class Shop extends React.Component {
     if (!favAlready) {
       product.liked += 1
       updateUserFav.favorite.push(product._id)
-    } else if (product.liked > 1) {
+    } else if (product.liked > 0) {
       product.liked -= 1 
       const index = updateUserFav.favorite.indexOf(product._id)
       updateUserFav.favorite.splice(index, 1)
-      console.log(updateUserFav.favorite, index);
     } else {
       return
     }
@@ -59,39 +60,63 @@ class Shop extends React.Component {
   }
 
   addCartItem = (prod, userid) => {
+    // calling redux addItemToCart action
+    console.log("from Redux state.cart...", this.props.stateCart);
+    this.props.addItemToCart(prod)
+    console.log("after adding item, from Redux state.cart...", this.props.stateCart);
+
     // check if prod already in the cart
     let newQty;
-    const foundItemInCart = this.state.userInfo.cart.find(item => item._id === prod._id)
+    const foundItemInCart = this.state.userInfo.cart.find(item => item.product._id === prod._id)
+    let cartItemData
+
     if (foundItemInCart) {
-      newQty = foundItemInCart.totQty + 1
-    } else {
-      newQty = 1
-    }
-    // adding item to CartItem model
-    let cartItemData = {
-      status: 'in cart',
-      totPrice: prod.price,
-      totQty: newQty,
-      product: prod._id,
-      userid: userid,
-    }
-    CartItemModel.add(cartItemData)
-    .then(res => {
-      // get updated user info after adding cart item
-      UserModel.getUserById(userid)
-      .then(res => {
-        this.setState({userInfo: res.data})
-        localStorage.setItem('foundUser', JSON.stringify(res.data))
+      newQty = 
+      cartItemData = {
+        status: 'in cart',
+        totPrice: foundItemInCart.totPrice + prod.price,
+        totQty: foundItemInCart.totQty + 1,
+        product: foundItemInCart.product._id,
+        userid: userid,
+      }
+      CartItemModel.edit(foundItemInCart._id, cartItemData)
+      .then(item => {
+        // get updated user info after adding cart item
+        UserModel.getUserById(userid)
+        .then(res => {
+          const updateUserInfo = res.data  // res.data would already have the changes
+          this.setState({userInfo: updateUserInfo, cartitems: updateUserInfo.cart})
+          localStorage.setItem('foundUser', JSON.stringify(updateUserInfo))
+        })
       })
-    })
-    .catch (err => console.log('err adding cart item...', err))
+      .catch (err => console.log('err adding cart item...', err))
+    } else {
+      cartItemData = {
+        status: 'in cart',
+        totPrice: prod.price,
+        totQty: 1,
+        product: prod._id,
+        userid: userid,
+      }
+      // add item to CartItem model if the product is not in the cart yet
+      CartItemModel.add(cartItemData)
+      .then(res => {
+        // get updated user info after adding cart item
+        UserModel.getUserById(userid)
+        .then(res => {
+          this.setState({userInfo: res.data})
+          localStorage.setItem('foundUser', JSON.stringify(res.data))
+        })
+      })
+      .catch (err => console.log('err adding cart item...', err))
+    }
   }
-  
+
   render() {
     const userInfoExist = this.state.userInfo ? this.state.userInfo.favorite || [] : []
     const displayProducts = this.state.products.map(prod => {
         const fav = userInfoExist.includes(prod._id) ? 'heart' : ''
-        return <IndexItem prod={prod} userInfo={this.state.userInfo} toggleFav={this.toggleFav} fav={fav} key={prod._id} currentUser={this.props.currentUser} addCartItem={this.addCartItem} admin={this.props.admin} />
+        return <IndexItem prod={prod} key={prod._id} userInfo={this.state.userInfo} toggleFav={this.toggleFav} fav={fav} currentUser={this.props.currentUser} addCartItem={this.addCartItem} admin={this.props.admin} />
     })
     // console.log("UserInfo: ", this.state.userInfo);
     // console.log("Products", this.state.products);
@@ -100,14 +125,21 @@ class Shop extends React.Component {
         <section className="products">
           <div className="title">
               <div className=" ind-name border">
-                  <h2>Unique and Artistic</h2>
+                  <h2>Shop Unique and Artistic Items</h2>
               </div>
           </div>
-          {displayProducts}
+          <div className="prod-wrapper">
+            {displayProducts}
+          </div>
         </section>
         </>
     )
   }
 }
 
-export default Shop;
+const mapStateToProps = (state) => ({
+    numItems: state.cart.numItems,
+    items: state.cart.items,
+    stateCart: state.cart,
+  })
+export default connect(mapStateToProps, { addItemToCart } )(Shop);

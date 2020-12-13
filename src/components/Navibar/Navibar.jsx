@@ -1,9 +1,9 @@
 import React from 'react';
-// import { Navbar } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux'
 import './Navibar.css';
 
-const Navibar = ({currentUser, userInfo, admin, logout}) => {
+const Navibar = ({currentUser, userInfo, admin, logout, numItems, items}) => {
   
   return(
     <nav>
@@ -16,7 +16,10 @@ const Navibar = ({currentUser, userInfo, admin, logout}) => {
           {currentUser && (
           <>
           <NavLink className="cart" exact to='/cart' >
-            <div className="item-count"><img src="/icons/cart.png" alt="logcarto" id="cart" /></div>
+            <div className="item-count">
+              <p>{numItems}</p>
+              <img src="/icons/cart.png" alt="logcarto" id="cart" />
+            </div>
           </NavLink>
           <div className="first-name">
             <p>Hi {userInfo.firstName}</p>
@@ -67,4 +70,11 @@ const Navibar = ({currentUser, userInfo, admin, logout}) => {
   )
 }
 
-export default Navibar;
+const mapStateToProps = (state) => ({
+  numItems: state.cart.numItems,
+  items: state.cart.items
+})
+
+export default connect(mapStateToProps)(Navibar);
+
+// store.subscribe(render)

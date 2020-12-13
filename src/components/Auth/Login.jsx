@@ -32,12 +32,12 @@ class Login extends React.Component {
       <form onSubmit={this.handleSubmit}>
 
         <div className="form-group">
-          <label htmlFor="username">Username</label>
-          <input onChange={this.handleChange} type="username" id="username" name="userName" value={this.state.userName} />
+          <label htmlFor="username">User Name</label>
+          <input onChange={this.handleChange} type="username" id="username" name="userName" placeholder= "User Name" value={this.state.userName} />
         </div>
         <div className="form-group">
           <label htmlFor="password">Password</label>
-          <input onChange={this.handleChange} type="password" id="password" name="password" value={this.state.password} />
+          <input onChange={this.handleChange} type="password" id="password" name="password" placeholder= "Password" value={this.state.password} />
         </div>
         <button className="btn btn-primary float-right" type="submit">Login</button>
       </form>

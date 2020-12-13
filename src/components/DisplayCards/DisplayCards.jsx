@@ -53,7 +53,7 @@ function DisplayCards({products, users, removeProduct, editProduct, admin}) {
 
   const productCards = arrProdTypeSumm.map(prod => {
     const relatedProducts = products.filter(product => (product.prodType === prod.type))
-    return <Summary prod={prod} key={prod.type} relatedProducts={relatedProducts} removeProduct={removeProduct} editProduct={editProduct} admin={admin} />
+    return <Summary prod={prod} key={prod.type} allProducts={products} relatedProducts={relatedProducts} removeProduct={removeProduct} admin={admin} />
     }
   )
 
